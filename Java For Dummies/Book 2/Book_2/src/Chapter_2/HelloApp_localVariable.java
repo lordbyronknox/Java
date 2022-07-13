@@ -1,3 +1,5 @@
+package Chapter_2;
+
 //Local variable: Declared in the body of a method.  No 'static' keyword.
 //Can only be use within the method. (other methods in the class can't see it.)
 //Only exist when the method is being used.
