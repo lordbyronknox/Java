@@ -18,7 +18,7 @@
 //                      without evaluating the right operand.
 // || = Conditional Or. (Binary). Same as |, but returns true if left operand evaluates to
 //                      true without evaluation the right operand.
-//
+
 //TENARY OPERATOR
 // ?:   =   replaces the 'if statement' in some cases.
 //eg. a ? b : c     =   if a = true, then apply b, else apply c.
