@@ -11,8 +11,7 @@ public class CrazyWithZeros {
         try {
             int answer = divideTheseNumbers(5, 0);
         } catch (Exception e) {
-            System.out.println("Tried twice, "
-                    + "still didn't work!");
+            System.out.println("Tried twice, still didn't work!");
         }
     }
 
