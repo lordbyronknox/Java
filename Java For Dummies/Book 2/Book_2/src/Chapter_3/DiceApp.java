@@ -7,6 +7,7 @@ public class DiceApp {
         int roll;
         String msg = "Here are 100 random rolls of the dice:";
         System.out.println(msg);
+        
         for (int i = 0; i < 100; i++) {
             roll = randomInt(1, 6);
             System.out.print(roll + " ");

@@ -43,8 +43,8 @@ public class GuessingGame {
                     System.out.print("\n Play again? (Y or N)");
                     answer = sc.next();
                     validInput = true;
-                    if (answer.equalsIgnoreCase("Y")); 
-                    else if (answer.equalsIgnoreCase("N")) {
+                    if (answer.equalsIgnoreCase("Y"));          //if condition with no statement to
+                    else if (answer.equalsIgnoreCase("N")) {    //...execute = do nothing. (ie. leave validInput as true.
                         keepPlaying = false;
                     } else {
                         validInput = false;
