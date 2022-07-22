@@ -1,4 +1,4 @@
-//Switch
+//Switch (if /else rather than Switch)
 
 package Chapter_6;
 
