@@ -29,7 +29,35 @@ LIFE CYCLE of an OBJECT
 
 WORKING WITH RELATED CLASSES
 * INHERITANCE
-    
+    An object-orientated technique where one class uses another class as its basis.
+    [Base, Superclass, parent class] <-- [Child, derived, sub-class... inherits from Base class]
+    The sub-class inherits all the super class's methods and fields.
+    You can use the superclass's methods and fields as is, or override them to alter their 
+    their behavior.
+    Subclasses can still have their own methods and fields, unique to themselves.
+    "IS A TYPE OF" relationship. (SoccerBall is-a-type-of Ball)
+
+* INTERFACE
+    A set of public method and field declarations that are given a name.
+    It does not provide any code that does the work - it only provides the declarations. Then
+    the classesthat use it must provide the code to implement the methods and fields.
+    It is basically a template for other classes... or like a superclass that only provides the
+    declarations of methods and fields.
+    A class can only have one base class, but it can implement multiple interfaces.
+
+DESIGNING A PROGRAM WITH OBJECTS
+A common way to design a Obj orientated application is to divide it into distinct layers/tiers.
+Most common is the 3 layered approach:
+    -   Presentation:   The objects in tis layer handle all the direct interaction with the user.
+                        HTML pages... Swing pages.... frame classes in a HUI-based app etc.
+    -   Logic:          Also known as the 'Business Rules Layer'. (as the objects here are
+                        responsible for carrying out the rules that govern the app.
+                        The objects here represent the the core objects of the app.
+                        For a business-type app this layer includes: Objects that represent
+                        business entities (like customers, products, orders, suppliers).
+    -   Database:       These objects handle data storage... eg SQL database etc.
+
+
 
 
 */
