@@ -62,7 +62,10 @@ RULE: You CANNOT access a nonstatic method or field from a static method. (becau
 
 COUNTING INSTANCES
 A common use for static variables is to keep track of how many instances of a class have been created.
-
+The following app contains 2 classes:
+    CountTest class = keeps track of how many times its constructor is called.
+    CountTestApp class = Uses a loop to create 10 instances of the class, displaying
+                         the number of of instances that have been createed after each instance.
 
 
 
