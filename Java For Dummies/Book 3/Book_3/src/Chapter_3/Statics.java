@@ -65,7 +65,83 @@ A common use for static variables is to keep track of how many instances of a cl
 The following app contains 2 classes:
     CountTest class = keeps track of how many times its constructor is called.
     CountTestApp class = Uses a loop to create 10 instances of the class, displaying
-                         the number of of instances that have been createed after each instance.
+                         the number of of instances that have been createed after creating each instance.
+[Note that the instance count is reset to zero ezch time the app is run. SO it only keeps track of 
+how many instances have been created during a particular execution of the app]
+
+[****see CountTestApp****]
+    
+
+
+THE SINGLETON PATTERN
+A class that you can use to create only ONE instance of.
+When you tryu to create an instance, the class first checks to see if an instance exists. If one 
+does exist then it uses that instance, otherwise it creates a new one.
+eg.
+
+class SingletonClass
+{
+    private static SingletonClass instance;
+
+    private SingletonClass()
+    {}
+
+    public static SingletonClass getInstance()
+    {
+        if (instance == null)
+            instance = new SingletonClass();
+        return instance;
+    }
+}
+
+***************************************
+If the below code was run it would return as true, and print "the objects are the same", since 
+the first call to 'getInstance()' creates a new instance... whereas the second call finds that
+an instance already exists, so a reference to that instance is returned.
+
+SingletonClass s1 = SingletonClass.getInstance();
+SingletonClass s2 = SingletonClass.getInstance();
+if (s1 == s2)
+System.out.println("The objects are the same");
+else
+System.out.println("The objects are not the same");
+
+
+
+
+PREVENTING INSTANCES
+Some classes shouldn't/dont instanciate at all. These classes consist entirely of static
+methods and fields.
+Math class is a good example. Its methods create utility functions that arent associated
+with a particular object.
+Other examples - you may create a class with static methods for validating data, or static 
+methods to retrieve data from a database. You dont need to create instances of either of these classes.
+
+A simple trick to prevent anyone from instantiating a class:
+To create an instance of a class you need a constructor. Just provide a single PRIVATE constructor.
+eg. (the Math class uses this technique)
+
+public class Validation
+{
+    private Validation() {}         //prevents instances
+    //static methods and fields go here
+}
+
+
+
+USING STATIC INITIALIZERS
+Initializing = assigning a value to a variable.
+
+eg.
+
+class StaticInit
+{
+    public static int x;            //declaring
+    static {                        //initializing using 'static {-code to be initialized between braces-}'
+            x = 32;
+            }
+    //other class members go here (such as constructors and methods)
+}
 
 
 
