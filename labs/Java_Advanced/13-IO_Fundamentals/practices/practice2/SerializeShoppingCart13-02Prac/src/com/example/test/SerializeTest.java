@@ -3,20 +3,22 @@ package com.example.test;
 import com.example.domain.Item;
 import com.example.domain.ShoppingCart;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.text.NumberFormat;
 
 public class SerializeTest {
 
     public static void main(String[] args) {
-        String directory = "/home/oracle/labs/13-IO_Fundamentals/practices/practice2/SerializeShoppingCart" ;
+        String directory = "C:/Users/byron/Desktop/Java/Java/labs/Java_Advanced/13-IO_Fundamentals/practices/practice2.testSerial";
         String cartId = null;
         ShoppingCart cart = null;
         System.out.println("Enter the ID of the cart file to create and serialize or q exit.");
         // Wrap the System.in InputStream with a BufferedReader to read
         // each line from the keyboard.
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
+        try ( BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
             cartId = in.readLine();
             if (cartId.equals("q")) {
                 System.exit(0);
@@ -38,5 +40,12 @@ public class SerializeTest {
 
         String cartFile = directory + "cart" + cart.getCartID() + ".ser";
         // Your code goes here....
+        try ( FileOutputStream fos = new FileOutputStream(cartFile);  ObjectOutputStream o = new ObjectOutputStream(fos)) {
+            o.writeObject(cart);
+        } catch (IOException e) {
+            System.out.println("Exception serializing " + cartFile + ": " + e);
+System.exit(-1);
+        }
+        System.out.println ("Successfully serialized shopping cart with ID: " + cart.getCartID());
     }
 }
