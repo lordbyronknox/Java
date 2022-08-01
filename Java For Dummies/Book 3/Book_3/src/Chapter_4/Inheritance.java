@@ -74,4 +74,5 @@ package Chapter_4;
 
 public class Inheritance {
     String test = "test";
+    String test2 = "test 2";
 }
