@@ -1,3 +1,4 @@
+
 package Chapter_5;
 
 
@@ -23,6 +24,7 @@ class Ticker implements ActionListener {
 
     private boolean tick = true;
 
+   
     @Override
     public void actionPerformed(ActionEvent event) {
         if (tick) {
@@ -30,6 +32,7 @@ class Ticker implements ActionListener {
         } else {
             System.out.println("Tock...");
         }
-        tick = !tick;
+        tick = !tick;   //toggles the value of tick between 'true' and 'false'.
     }
 }
+
