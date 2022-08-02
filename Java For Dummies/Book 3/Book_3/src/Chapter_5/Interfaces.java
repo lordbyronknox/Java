@@ -94,7 +94,34 @@ An interface that has no members.  It serves only to identify a class as belongi
 set of classes that posses some capability or characteristic.
 eg. is the Cloneable interface, which marks classes that can be cloned.
 
+DEFAULT METHODS
+If you need to add a method to a interface after it is already being implemented by
+one or more classes, instead of adding the method to the interface and then adding it
+to all the classes implementing it too.... you can use the DEFAULT METHOD.
+The DEFAULT METHOD provides code to any classes that implement the interface but do
+not provide the implementation themselves.
+The default method provides code that will be used if the class implementing the interface
+does not provide itself.
+
+eg.
+    interface Payable
+    {
+        void play();            //method that was in the interface originally.
+        default void quit()     //method added at a later stage.
+        {   
+            System.out.println("You have quit!");
+        }
+    }
+
+
+
+
+
  */
+
+
+
+
 package Chapter_5;
 
 
