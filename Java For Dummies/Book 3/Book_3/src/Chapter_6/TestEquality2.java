@@ -8,7 +8,7 @@ public class TestEquality2 {
         Employee emp2 = new Employee(
                 "Martinez", "Anthony");
         
-        if (emp1.equals(emp2)) {
+        if (emp1.equals(emp2)) {                                    //compares Employee objects using equals() method
             System.out.println("These employees are the same.");
         } else {
             System.out.println("These are different employees.");
@@ -16,7 +16,7 @@ public class TestEquality2 {
     }
 }
 
-class Employee {
+class Employee {                                            
 
     private String lastName;
     private String firstName;
@@ -35,22 +35,24 @@ class Employee {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) {         //overriden equals() method
 // an object must equal itself
-        if (this == obj) {
-            return true;
+        if (this == obj) {                      //true, if same objects are being compared
+            return true;                        //(an object must always be equal to itself)
         }
 
 // no object equals null
-        if (this == null) {
-            return false;
+        if (this == null) {                     //false, if equal to null
+            return false;                       //(nothing is equal to null)
         }
 // objects of different types are never equal
-        if (this.getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {    //comares the object's types
             return false;
         }
 
-// cast to an Employee, then compare the fields
+// cast to an Employee, then compare the fields.
+// Having slid through the other tests, you can assume that you’re comparing two 
+// different Employee objects, so the next step is to cast the other object to an Employee.
         Employee emp = (Employee) obj;
 
         return this.lastName.equals(emp.getLastName())
