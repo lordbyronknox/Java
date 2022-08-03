@@ -91,12 +91,101 @@ CRITERIA FOR CREATING A EQUALS() METHOD (assuming that the parameter is named ob
         return this.lastName.equals(emp.getLastName()) &&
             this.firstname.equals(emp.getFirstName());
 
+see TestEquality2.java
+
+
+________________________________________________________________________________
+
+THE CLONE METHOD
+Making an exact copy of an object.
+
+NOTE: this code does not clone, it simply creates two variables that reference the same object.
+    Employee emp1 = new Employee("Stewart", "Martha");
+    Employee emp2 = emp1;
+
+You can do this: (this sets the second obect's values to the same as the first object).
+    Employee emp1 = new EMployee("Stewart", "Martha");
+    Employee emp2 = new Employee();
+    emp2.setLastName(emp1.getLastName());
+    emp2.setFirstName(emp1.getFirstName());
+    emp2.setSalary(emp1.getSalary());
+
+The clone method is provided to handle this, but it isn't easy to use so only use it when necessary.
+Note:
+    the clone() method is provided by the Object class.
+    clone() returns an object... so you have to cast it's result when using it in your classes.
+    clone() is private... so you have to override it in your classes if you want others to access it.
+    
+see CloneTest.java
+
+
+SHALLOW CLONE
+You can call the clone() method from Object directly in your clone method. 
+(IF ALL THE FIELDS IN YOUR CLASS ARE PRIMITIVES OR STRINGS)
+It can automatically create a copy of your object that contains duplicates of all primitive type 
+fields, and immutable reference types such as Strings.
+1. use the super keyword to class the Object clone method, 
+eg. super.clone()
+2. Declare that the class supports the Cloneable interface.
+3. enclose the super.clone() method in a try/catch statement that catches the
+    exception CloneNotSupportedException. (this exception is thrown if you forget to implement
+    the Cloneable interface.
+
+eg.
+    class Employee implements Cloneable
+    {
+        // Fields and methods omitted...
+        public Object clone()
+        {
+        Employee emp;
+        try
+            {
+                emp = (Employee) super.clone();
+            }
+        catch (CloneNotSupportedException e)
+            {
+            return null; // will never happen
+            }
+        return emp;
+        }
+    }
+
+
+CREATING DEEP COPIES
+A clone in which any subobjects within the main object are also cloned.
+
+see CloneTest2.java
 
 
 
+________________________________________________________________________________
 
+THE CLASS class
+Every class used by a java application is represented in memory by an object
+of the Class type. (each different class in an app has only one instance representing it in
+the Class object.
+Therefor the following is 'true':
 
+    Object o1 = new Employee();
+    Object 02 = new Employee();
+    if(o1.getClass() == 02.getClass())      //true: both are Employee class.
+    ....                                      as they used the Employee() constructor.
 
+eg. To get the class of an object:
+
+    HourlyEmployee emp = new Employee();
+    Class c = emp.getClass()
+
+Here the c refers to a Class object for the HourlyEmployee class, NOT the Employee class.
+
+There are many Class methods. The most important ones are:
+getName()   - Returns a string representation of the name of a class.
+getSuperclass - Returns another Class object representing this Class object's superclass.
+
+Tofind out if an object is of a particular type:
+    
+    if (emp.getCLass().getName().equals("Employee"))
+        System.out.println("This is an employee object);
 
 
 
