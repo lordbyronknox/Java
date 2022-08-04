@@ -182,7 +182,7 @@ There are many Class methods. The most important ones are:
 getName()   - Returns a string representation of the name of a class.
 getSuperclass - Returns another Class object representing this Class object's superclass.
 
-Tofind out if an object is of a particular type:
+To find out if an object is of a particular type:
     
     if (emp.getCLass().getName().equals("Employee"))
         System.out.println("This is an employee object);
