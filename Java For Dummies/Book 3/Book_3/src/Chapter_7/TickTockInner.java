@@ -10,9 +10,9 @@ public class TickTockInner
     
     public static void main(String[] args)
     {
-        TickTockInner t = new TickTockInner();
-        t.go();
-    }
+        TickTockInner t = new TickTockInner();  //Inner class can only be used by an instantiated object.
+        t.go();                                 //Calling the go() method, using the new instance.
+    }                                           
     
     private void go()
     {
@@ -22,9 +22,10 @@ public class TickTockInner
         
         //Display a message box to prevent the program from ending immediately.
         JOptionPane.showMessageDialog(null, "Click OK to exit program");
-        System.out.println(0);
+        System.exit(0);
     }
     
+    //INNER CLASS
     class Ticker implements ActionListener
     {
         private boolean tick = true;
@@ -32,7 +33,7 @@ public class TickTockInner
         public void actionPerformed(ActionEvent event)
         {
             if (tick) {
-                System.out.println(tickMessage);
+                System.out.println(tickMessage);    //inner class accesses outer classes fields directly.
             }
             else {
                 System.out.println(tockMessage);

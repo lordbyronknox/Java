@@ -30,6 +30,42 @@ eg.
     MyOuterClass.this
 
 
+STATIC INNER CLASSES
+- Similar to an inner class but does not require an instance of the outer class.
+- Cant access any non-static fields or methods in its outer class.
+
+
+eg.
+    class outerClassName
+    {
+        private static class innerClassName
+        {
+            //body of inner class.
+        }
+    }
+
+
+
+ANONYMOUS INNER CLASSES
+- A class that is defined where you want to instanciate it.
+  You code the body of the class right where you need it, you dont have to give
+  it a name. (hence... anonymous).
+  
+eg.
+    new ClassOrInterface() { body }
+
+- You cant create a constructor for an anonymous class (because it doesnt have a name).
+- You cant pass parameters if the anonymous class is based on an interface. (interfaces
+    dont have constructors, so parameters cant be passed to a constructor).
+- An anonymous class is a special type of inner class, so it has access to the
+    fields and methods of the outer class automatically.
+- Anonomous classes cant be static.
+
+
+
+
+LAMBDA EXPRESSIONS
+
 
 
 */
