@@ -1,7 +1,7 @@
 /*
 OBJECT
 The mother of all classes.
-All classes inherit from the Object class. (it is imposible to create a class that does not inherit Object).
+All classes inherit from the Object class. (it is NOT POSIBLE to create a class that does not inherit Object).
 It provides a set of methods that are available to every java object.
 
 
@@ -33,31 +33,8 @@ Or you could take a shortcut and use string concatination, like this:
 The default of toString() isn't very useful - unless you want to see the hash code.
 So you usually override it in your Classes.
 eg. see TestToString2
-    public class TestToString
-{
-public static void main(String[] args)
-{
-Employee emp = new Employee("Martinez",
-"Anthony");
-System.out.println(emp.toString());
-}
-}
-class Employee
-{
-private String lastName;
-private String firstName;
-public Employee(String lastName, String firstName)
-{
-this.lastName = lastName;
-this.firstName = firstName;
-}
-public String toString()
-{
-return "Employee["
-+ this.firstName + " "
-+ this.lastName + "]";
-}
-}
+
+ 
 
 ________________________________________________________________________________
 THE EQUALS METHOD

@@ -22,22 +22,21 @@ class Employee
         this.firstName = firstName;
     }
 
-    @Override
-    public String toString() 
-    {
-        return "Employee["
-                + this.firstName + " "
-                + this.lastName + "]";
-    }
+//    @Override
+//    public String toString() 
+//    {
+//        return "Employee[" + this.firstName + " " + this.lastName + "]";
+//    }
     
     //Above has the class name hard coded into it. You can improve this
     //by using the getClass() method, as below:
-/*    
+   
+    @Override
     public String toString()
     {
         return this.getClass().getName() + "[" + 
                 this.firstName + " " +
                 this.lastName + "]";
     }
-*/
+
 }

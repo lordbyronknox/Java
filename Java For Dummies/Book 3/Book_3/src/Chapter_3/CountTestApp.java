@@ -3,7 +3,7 @@ package Chapter_3;
 public class CountTestApp {
 
     public static void main(String[] args) {
-//        printCount();
+        printCount();
         for (int i = 0; i < 10; i++) {
             CountTest c1 = new CountTest();     //creates an instance of the class each time it loops.
             printCount();   //static method called directly

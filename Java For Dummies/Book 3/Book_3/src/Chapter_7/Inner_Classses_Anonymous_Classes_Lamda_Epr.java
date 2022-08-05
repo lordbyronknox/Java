@@ -65,7 +65,21 @@ eg.
 
 
 LAMBDA EXPRESSIONS
+Similar to anonymous classes, but implements a FUNCTIONAL INTERFACE which has ONE abstract method.
+eg.
+    interface Ball
+    {
+        void hit();
+    }
 
+eg. of an implementation of the Ball interface:
+    () -> { System.out.println("You hit it!); }
+
+- Syntax:
+    If you use an expression:   (parameter) -> expression
+    If you use a statement:     (parameter) -> { statement;... }
+
+- A functional interface can contain other methods, but they cant be abstract, they must be DEFAULT METHODS.
 
 
 */
