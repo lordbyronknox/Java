@@ -3,10 +3,8 @@ package Chapter_6;
 public class TestEquality2 {
 
     public static void main(String[] args) {
-        Employee emp1 = new Employee(
-                "Martinez", "Anthony");
-        Employee emp2 = new Employee(
-                "Martinez", "Anthony");
+        Employee emp1 = new Employee("Martinez", "Anthony");
+        Employee emp2 = new Employee("Martinez", "Anthony");
         
         if (emp1.equals(emp2)) {                                    //compares Employee objects using equals() method
             System.out.println("These employees are the same.");
@@ -46,8 +44,8 @@ class Employee {
             return false;                       //(nothing is equal to null)
         }
 // objects of different types are never equal
-        if (this.getClass() != obj.getClass()) {    //comares the object's types
-            return false;
+        if (this.getClass() == obj.getClass()) {    //compares the object's types
+            return true;
         }
 
 // cast to an Employee, then compare the fields.
