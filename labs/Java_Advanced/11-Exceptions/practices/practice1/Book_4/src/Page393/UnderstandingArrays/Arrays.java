@@ -38,11 +38,43 @@ ARRAYS
         or
             int[] primes = new int[] { 2, 3, 5, 7, 11, 13, 17 };
 
-USING FOR LOOPS WITH ARRAYS
+- USING FOR LOOPS WITH ARRAYS
+    eg. This for loop assigns 100 random numbers to an array:
+        int[] numbers = new int[100];
+        for (i = 0; i < 100; i++)
+            numbers[i] = (int) (Math.random() * 100) + 1;
 
+    eg. A loop that fills an array with strings entered by a user:
+        String[] players = new String[count];
+        for  (i = 0; i < 100; i++)
+            System.out.print("Enter player name: ");
+            players[i] = sc.nextLine();
         
+- USING ARRAYS WITH METHODS
+    To write methods that use arrays as return types or parameters, use empty []
+    eg.
+        public static String[] getDaysOfWeek() {...
+    and/or
+        public static void printStringArray(String[] strings) {...
 
 
+- USING TWO-DIMENSIONAL ARRAYS
+    An array of arrays.  (...an array who's elements are each arrays)
+    An example is an array that holds the sales data for the last five years. Each year's
+        records is stored in an array (2001, 2002 etc.), and each array is stored in an array (sales).
+    
+    Declaring a two dimensional array:
+        double sales[][];
+    
+    Creating a two-dimensional array:
+        Use two sets of brackets:
+        [5] = (rows) the number of elements. 
+        [4] = (columns) length of each array.
+        eg.
+            double sales = new double[5][4];
+
+    Accessing two-dimensional arrays
+        sales[0][0] = 23853.0;      //sets the first value of the first array within sales.
 
 
 
@@ -51,7 +83,7 @@ USING FOR LOOPS WITH ARRAYS
 */
 
 
-package UnderstandingArrays;
+package Page393.UnderstandingArrays;
 
 /**
  *
