@@ -27,7 +27,7 @@ Using Netbeans:
 Using command line:
 1. Open a command line in the package's root.
 2. Use a jar command that specifies:
-    - the option cf
+    - the option 'cf'
     - the name of the jar file
     - and the path to the class files you want to archive.
       eg:   jar cf utils.jar com\lowewriter\ util\*.class
@@ -63,7 +63,10 @@ Creating a module:
 
 
 Creating a modular jar file
+....?
 
+Compliling a module:
+javac module-info.java com\lowewriter\payroll\*.java
 
 */
 package Page357.CreatingYourOwnPackages;

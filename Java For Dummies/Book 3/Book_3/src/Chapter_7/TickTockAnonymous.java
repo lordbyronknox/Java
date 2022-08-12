@@ -26,8 +26,8 @@ public class TickTockAnonymous {
                 }
                 tick = !tick;
             }
-        });                                                 // } = end of anonymous class body.
-                                                            // ); = end of Timer constructor parameter list.
+        }                                                 // } = end of anonymous class body.
+         );                                                   // ); = end of Timer constructor parameter list.
         t.start();
         //Display a message box to prevent the program from ending immediately.
         JOptionPane.showMessageDialog(null, "Click OK to exit pragram");

@@ -14,7 +14,7 @@ public class MarkVowels
         String s = sc.nextLine();
         String originalString = s;
         
-        int vowelCount = 0;
+//        int vowelCount = 0;
         
         for (int i = 0; i < s.length(); i++)
         {

@@ -17,8 +17,8 @@ public class TickTockInner
     private void go()
     {
         //create a timer that calls the Ticker class at one sec intervals
-        Timer t = new Timer(1000, new Ticker());
-        t.start();
+        Timer time = new Timer(1000, new Ticker());
+        time.start();
         
         //Display a message box to prevent the program from ending immediately.
         JOptionPane.showMessageDialog(null, "Click OK to exit program");
