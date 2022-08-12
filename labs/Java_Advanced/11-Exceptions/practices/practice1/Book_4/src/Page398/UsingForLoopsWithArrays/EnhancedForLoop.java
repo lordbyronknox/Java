@@ -11,7 +11,7 @@ public class EnhancedForLoop {
         String[] days = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
                           "Friday", "Saturday" };
         
-        for (String day : days)             //(variable to assign each element to : array to loop through).
+        for (String day : days)        //(<variable to assign each element to> : <array to loop through>).
         {
             System.out.println(day);
         }

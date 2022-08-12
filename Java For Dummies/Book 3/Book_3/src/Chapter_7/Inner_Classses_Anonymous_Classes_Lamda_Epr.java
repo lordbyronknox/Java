@@ -2,7 +2,7 @@
 
 INNER CLASS
 - A class within another class.
-- You can declare it 'private', 'public', or 'pritected'. (to determine if other classes
+- You can declare it 'private', 'public', or 'protected'. (to determine if other classes
     can access it.
 eg.
 
@@ -26,7 +26,7 @@ eg.
     class is interested in. So usually the inner class is PRIVATE, so only the outer class
     can see it.
 - If an inner class needs to refer to an instance of the outer class you do so by
-    using the name of the outer class, then dot, then this:
+    using the name of the outer class, then dot, then 'this':
     MyOuterClass.this
 
 

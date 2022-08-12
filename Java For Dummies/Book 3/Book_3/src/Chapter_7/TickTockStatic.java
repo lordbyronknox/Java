@@ -9,7 +9,7 @@ public class TickTockStatic {
     private static String tockMessage = "Tock...";  // static class can access it.
 
     public static void main(String[] args) {
-        TickTockStatic t = new TickTockStatic();
+        TickTockStatic t = new TickTockStatic();    //create an object so it can access the inner class.
         t.go();
     }
 
