@@ -12,7 +12,7 @@ public class CopyDemo {
     {
         int arrayOriginal[] = {42, 55, 21};
         int arrayNew[] = Arrays.copyOf(arrayOriginal, 4);   //(<array to copy from>, <length of new array>)
-        int arrayNew2[] = Arrays.copyOf(arrayOriginal, 2);
+        int arrayNew2[] = Arrays.copyOf(arrayOriginal, 15);
         
         printIntArray(arrayNew);
         printIntArray(arrayNew2);

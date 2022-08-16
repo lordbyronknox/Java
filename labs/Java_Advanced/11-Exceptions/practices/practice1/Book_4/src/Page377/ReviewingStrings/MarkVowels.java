@@ -1,4 +1,5 @@
 //Extracting Substrings from a string.
+// .substring(start, stop)  = returns a section of a string as a new string.
 
 package Page377.ReviewingStrings;
 

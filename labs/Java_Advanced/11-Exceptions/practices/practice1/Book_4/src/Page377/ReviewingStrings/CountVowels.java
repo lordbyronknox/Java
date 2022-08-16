@@ -23,7 +23,7 @@ public class CountVowels {
              || (c == 'I') || (c == 'i')
              || (c == 'O') || (c == 'o')
              || (c == 'U') || (c == 'u'))
-             vowelCount++;                      //increments 'vowelCount if true.
+             vowelCount++;                      //increments 'vowelCount' if true.
         }
         System.out.println("That string contains " + vowelCount + " vowels.");
         }

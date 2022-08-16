@@ -9,8 +9,8 @@ package Page434.DeletingElements;
  */
 public class Employee {
 
-    private final String firstName;
-    private final String secondName;
+    public final String firstName;
+    public final String secondName;
     
     public Employee(String firstName, String secondName)
     {

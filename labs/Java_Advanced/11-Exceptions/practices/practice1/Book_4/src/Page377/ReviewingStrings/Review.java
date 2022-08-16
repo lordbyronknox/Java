@@ -7,7 +7,7 @@ public class Review {
         /*
         1. Strings are refernce types, not value types - They hold a reference to
             an object created from the String class.
-        2. Strings are marked with quatations "". (chars are marked with apostrophes '.
+        2. Strings are marked with quatations "". (chars are marked with apostrophes ''.
             (Note: chars != strings)
         3. Strings are immutable - once a value has been assigned you cant change it.
            Methods that work with strings usually return a new string.
@@ -52,7 +52,7 @@ public class Review {
         String bb = sb.substring(4);    //returns "ball", starts from index 4 ("b"), to the end.
         String bc = sb.substring(2, 6); //returns "seba", starts at index 2, ends BEFORE index 6.
         
-        //Splitting a string
+        //Splitting a string. (split() returns an array of strings)
         String address = "1500 N. Third Street:Fresno:CA:93722";
         String[] parts = address.split(":");    //requires that you use an array.
         
@@ -61,9 +61,10 @@ public class Review {
         String dogs = s.replaceAll("cat", "dog");
         
         //StringBuilder and StringBuffer (these are classes, not methods)
-        //* These two methods are exactlt the sam, except that Stringbuilder is more efficient
-        //  but not safe for threaded applications.
-        StringBuilder sbuild = new StringBuilder("This is my string");
+        //* These two methods are exactly the sam, except that Stringbuilder is more efficient
+        //  but not safe for threaded applications. So use Stringbuilder, unless working with threaded apps.
+        StringBuilder sbuild = new StringBuilder("This is my string");  //create a Stringbuilder object.
+        System.out.println(sbuild);
         
         
     }
