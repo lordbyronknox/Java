@@ -3,7 +3,7 @@ ARRAY LISTS
 - Automatically resize themselves.
 - Allows you to insert elements into the middles of a collection.
 - Allows you to delete items.
-- The array list class creates a new list a new array list, copies existing items and 
+- The array list class creates a new array list, copies existing items and 
     then adds the new item.
 
 Methods

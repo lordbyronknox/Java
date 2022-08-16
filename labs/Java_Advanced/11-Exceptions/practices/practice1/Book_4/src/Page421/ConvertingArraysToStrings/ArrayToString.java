@@ -21,7 +21,7 @@ public class ArrayToString
         for (int[] i : Two_D_array2)
             for (int j : i)
         {
-            System.out.println(j);
+            System.out.print(j + " ");
         }
         
     }

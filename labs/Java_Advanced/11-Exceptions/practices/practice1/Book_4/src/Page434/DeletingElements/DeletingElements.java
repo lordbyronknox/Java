@@ -17,7 +17,7 @@ public class DeletingElements {
     
     public static void main(String[] args) 
     {
-        ArrayList<Employee> emps = new ArrayList<Employee>();
+        ArrayList <Employee> emps = new ArrayList <Employee>();
         
         //Create employee objects
         Employee emp1 = new Employee("Adams", "Gomez");
@@ -30,12 +30,16 @@ public class DeletingElements {
         emps.add(emp3);
         
         //print array list
-        System.out.println(emps);
+        for (Employee i : emps)
+            System.out.println(i.firstName + " " + i.secondName);
         
         //remove element from array list
         emps.remove(emp3);
+//        emps.clear();
         
-        System.out.println(emps);
+        System.out.println("\n[emp3 removed from list]");
+        for (Employee i : emps)
+            System.out.println(i.firstName + " " + i.secondName);
         
     }
 }

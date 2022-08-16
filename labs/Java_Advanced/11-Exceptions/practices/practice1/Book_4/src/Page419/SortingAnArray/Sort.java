@@ -14,6 +14,8 @@ public class Sort {
         int[] lotto = new int[6];
         for (int i = 0; i < 6; i++)
             lotto[i] = (int)(Math.random() * 100) + 1;
+        for (int i : lotto)
+        System.out.println(i);
         
         //sort the array
         Arrays.sort(lotto);           

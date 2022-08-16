@@ -1,4 +1,4 @@
-// .split() requires you to use an array, as it slits a string into an array of strings,
+// .split() requires you to use an array, as it splits a string into an array of strings,
 //  at a specified deliminator.
 
 package Page382.ExtractingSubstringsFromAString;
