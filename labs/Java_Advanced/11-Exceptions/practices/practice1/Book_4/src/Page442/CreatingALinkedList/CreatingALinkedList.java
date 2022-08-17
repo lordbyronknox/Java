@@ -9,8 +9,10 @@ ADVANTAGES OVER ARRAYLISTS:
 - More efficient with adding and removing elements into the middle of the list - it just changes the pointers
   of the previous and next object.
 - LINKEDLISTS are especially well suited for creating two common types of list:
-    STACKS: A list where the items can only be added or removed from the front of the list.
+    STACKS: A list where the items can only be added or removed from the top of the list.
+            (last in, first out)
     QUEUES: A list where items are always added to the Back, and removed from the front.
+            (first in, first out)
 
 DISADVANTAGE
 - Require more memory than arrays and are slower when it comes to simple sequential access.
@@ -44,7 +46,7 @@ public class CreatingALinkedList {
             System.out.println(s);            
         System.out.println("\n******************");
         
-        //adding to a linked list using .addFirst()
+        //adding to the front of a linked list using .addFirst()
         officers.addFirst("Zola");
         officers.addFirst("Ziggy");
         
