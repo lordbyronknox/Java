@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+App to test the GenQueue class.
  */
 package Page458.GenericQueueClass;
 
@@ -8,6 +7,7 @@ package Page458.GenericQueueClass;
  *
  * @author byron
  */
-public class GenQueueTest {
+public class GenQueueTest 
+{
     
 }
