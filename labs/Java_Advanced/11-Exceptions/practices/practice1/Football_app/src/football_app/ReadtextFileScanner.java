@@ -4,24 +4,42 @@
  */
 package football_app;
 
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
-
-public class ReadtextFileScanner {
-  public static void main(String[] args) 
-  {
-    try {
-      File myObj = new File("C:\\Users\\byron\\Desktop\\Java\\Java\\labs\\Java_Advanced\\11-Exceptions\\practices\\practice1\\Football_app\\src\\football_app\\scores.txt");
-      Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        System.out.println(data);
-      }
-      myReader.close();
-    } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
+// import necessary packages
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+ 
+public class GFG {
+    // include throws to handle some file handling exceptions
+    public static void main(String[] args)
+        throws IOException
+    {
+        // arraylist to store strings
+        List<String> listOfStrings
+            = new ArrayList<String>();
+       
+        // load content of file based on specific delimiter
+        Scanner sc = new Scanner(new FileReader("C:\\Users\\byron\\Desktop\\Java\\Java\\labs\\Java_Advanced\\11-Exceptions\\practices\\practice1\\Football_app\\src\\football_app\\scores.txt"))
+                         .useDelimiter(",\\s*");
+        String str;
+       
+        // checking end of file
+        while (sc.hasNext()) {
+            str = sc.next();
+           
+            // adding each string to arraylist
+            listOfStrings.add(str);
+        }
+       
+        // convert any arraylist to array
+        String[] array
+            = listOfStrings.toArray(new String[0]);
+       
+        // print each string in array
+        for (String eachString : array) {
+            System.out.println(eachString);
+        }
     }
-  }
 }
