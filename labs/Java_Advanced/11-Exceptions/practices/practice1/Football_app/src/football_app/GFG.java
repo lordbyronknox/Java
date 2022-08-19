@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
  
-public class Football_app {
+public class GFG {
     // include throws to handle some file handling exceptions
     public static void main(String[] args) throws IOException
     {
@@ -36,42 +36,72 @@ System.out.println("----------------");
                      
         // convert any arraylist to array
         String[] array = listOfStrings.toArray(new String[0]);
+        System.out.println(array.toString());
        
                
-        //print each game with scores.
+        //print each game with scores, and calculate the winner
         int team1 = 0;
         int team2 = 1;
         while (team2 < array.length)
         {
             String[] team1ANDgoals = array[team1].split(" ");
+            String team1Name = team1ANDgoals[0];
+            int team1Goals = Integer.parseInt(team1ANDgoals[1]);
+            
             String[] team2ANDgoals = array[team2].split(" ");
+            String team2Name = team2ANDgoals[0];
+            int team2Goals = Integer.parseInt(team2ANDgoals[1]);
+            
+           
             
             System.out.println("Game: " + array[team1] + " vs " + array[team2]);
             team1 += 2;
             team2 += 2;
-            
-         
-            
                       
             if (Integer.parseInt(team1ANDgoals[1]) > Integer.parseInt(team2ANDgoals[1])) 
             {
-                System.out.println(team1ANDgoals[0] + " WON!!" + "\n");
-                log.put(team1ANDgoals[0], (team1ANDgoals[1] + 3)); 
+                System.out.println(team1ANDgoals[0] + " WON!!\n");
+                                
+//                int sumGoals = (Integer)log.get(array[team1] + 3);
+//                log.put(team1ANDgoals[0], sumGoals);
+                  
+//              
+                
             }
             else if (Integer.parseInt(team1ANDgoals[1]) < Integer.parseInt(team2ANDgoals[1])) 
             {
-                System.out.println(team2ANDgoals[0] + " WON!!" + "\n");
+                System.out.println(team2ANDgoals[0] + " WON!!\n");
                 log.put(team2ANDgoals[0], 3); 
             }
             else {
-                System.out.println("DRAW" + "\n");
+                System.out.println("DRAW\n");
                 log.put(team1ANDgoals[0], 1); 
                 log.put(team2ANDgoals[0], 1); 
             }
-            System.out.println(team1ANDgoals[1]);
+            
+            //*************testing****************
+//            System.out.println(team1ANDgoals[0]);
+//            System.out.println(log.values());
+//            System.out.println(log.keySet());
+//            System.out.println(log.get(team1ANDgoals[0]));
+//              
+            
+//                var sumGoals = (Integer)log.get(team);
+//                int sum = sumGoals + 3;
+//                System.out.println(sum);
+            
+            
+          
         }
-          
-          
+        
+        
+        //**************testing*********************
+        
+//        
+            
+//            System.out.println(log.get("Liverpool"));
+//             count = log.get("Liverpool");
+//          
 }
    
 }
