@@ -22,7 +22,7 @@ public class ArrayList<E>
     ArrayList<Employee> empList;
     
     //and here...for example... the <E> is <String> type.
-    //  ArrayList<String> empList2;
+//      ArrayList<String> empList2;
     
     //add() method has the parameter type E... which means it will accept Employee type objects.
     public boolean add(E o)     //E as a parameter type (Here E is Employee).

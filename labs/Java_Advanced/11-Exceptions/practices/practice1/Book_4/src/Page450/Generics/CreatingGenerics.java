@@ -26,6 +26,7 @@ public class CreatingGenerics {
     {
         //body of the method
         return this.add(o);
+        
     }
  
     
