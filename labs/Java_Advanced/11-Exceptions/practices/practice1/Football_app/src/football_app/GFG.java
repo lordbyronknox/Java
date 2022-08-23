@@ -7,6 +7,7 @@ package football_app;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.Map.Entry;
  
 public class GFG {
     // include throws to handle some file handling exceptions
@@ -14,6 +15,7 @@ public class GFG {
     {
         // arraylist to store strings
         List<String> listOfStrings = new ArrayList<String>();
+        //HaspMap to display log positions
         HashMap log = new HashMap();
        
         // load content of file based on specific delimiter
@@ -29,31 +31,27 @@ System.out.println("----------------");
         {
             str = sc.next();                                //assign each line to variable 'str'.
             listOfStrings.add(str);                         //adding each str to arraylist 'listOfStrings'
-            //extract team name and add it to HashMap 'log'.
+            
+ 
+            //extract team name and add it to 'log'.
             String teamName = str.substring(0, (str.length() -2));
             log.put(teamName.trim(), 0);
-        }
-                     
+        }       
+        System.out.println(log);
         // convert any arraylist to array
         String[] array = listOfStrings.toArray(new String[0]);
-        System.out.println(array.toString());
+
        
                
-        //print each game with scores, and calculate the winner
+        //print each game with scores, and calculate the points
         int team1 = 0;
         int team2 = 1;
         while (team2 < array.length)
         {
             String[] team1ANDgoals = array[team1].split(" ");
-            String team1Name = team1ANDgoals[0];
-            int team1Goals = Integer.parseInt(team1ANDgoals[1]);
-            
+//                        
             String[] team2ANDgoals = array[team2].split(" ");
-            String team2Name = team2ANDgoals[0];
-            int team2Goals = Integer.parseInt(team2ANDgoals[1]);
-            
-           
-            
+//          
             System.out.println("Game: " + array[team1] + " vs " + array[team2]);
             team1 += 2;
             team2 += 2;
@@ -61,47 +59,37 @@ System.out.println("----------------");
             if (Integer.parseInt(team1ANDgoals[1]) > Integer.parseInt(team2ANDgoals[1])) 
             {
                 System.out.println(team1ANDgoals[0] + " WON!!\n");
-                                
-//                int sumGoals = (Integer)log.get(array[team1] + 3);
-//                log.put(team1ANDgoals[0], sumGoals);
-                  
-//              
-                
-            }
+                log.put(team1ANDgoals[0], (Integer) log.get(team1ANDgoals[0]) + 3);
+              }
             else if (Integer.parseInt(team1ANDgoals[1]) < Integer.parseInt(team2ANDgoals[1])) 
             {
                 System.out.println(team2ANDgoals[0] + " WON!!\n");
-                log.put(team2ANDgoals[0], 3); 
+                log.put(team2ANDgoals[0], (Integer) log.get(team2ANDgoals[0]) + 3); 
             }
             else {
                 System.out.println("DRAW\n");
-                log.put(team1ANDgoals[0], 1); 
-                log.put(team2ANDgoals[0], 1); 
+                log.put(team1ANDgoals[0], (Integer) log.get(team1ANDgoals[0]) + 1);
+                log.put(team2ANDgoals[0], (Integer) log.get(team2ANDgoals[0]) + 1); 
             }
             
-            //*************testing****************
-//            System.out.println(team1ANDgoals[0]);
-//            System.out.println(log.values());
-//            System.out.println(log.keySet());
-//            System.out.println(log.get(team1ANDgoals[0]));
-//              
-            
-//                var sumGoals = (Integer)log.get(team);
-//                int sum = sumGoals + 3;
-//                System.out.println(sum);
-            
-            
-          
         }
         
+        System.out.println(log.entrySet());
+        ArrayList<String> log2 = new ArrayList();
+
+     
+     for(Object element : log.entrySet()){
+         log2.add(element + "");
+     }
+         
+        System.out.println(log2);
+    for (int i = 0; i < log2.size(); ++i) {
+        String log2element = (log2.get(i));
+        System.out.println(log2element.lastIndexOf(i));
+        System.out.println(log2element.substring(log2element.));
         
-        //**************testing*********************
-        
-//        
-            
-//            System.out.println(log.get("Liverpool"));
-//             count = log.get("Liverpool");
-//          
+    }
+         
+     
 }
-   
 }
