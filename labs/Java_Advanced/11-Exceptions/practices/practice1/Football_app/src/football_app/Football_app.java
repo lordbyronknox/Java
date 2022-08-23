@@ -71,7 +71,7 @@ System.out.println("----------------");
             System.out.println(team1ANDgoals[1]);
         }
           
-          
+          System.out.println(log);
 }
    
 }
