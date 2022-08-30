@@ -15,7 +15,7 @@ public class FootballApp {
         HashMap log = new HashMap();
        
         // load content of file based on specific delimiter
-        Scanner sc = new Scanner(new FileReader("C:\\Users\\byron\\Desktop\\Java\\Java\\labs\\Java_Advanced\\11-Exceptions\\practices\\practice1\\Football_app\\src\\football_app\\scores.txt"))
+        Scanner sc = new Scanner(new FileReader("\"C:\\Users\\byron\\Desktop\\Java\\Java\\labs\\Java_Advanced\\Football_app\\src\\football_app\\scores.txt"))
                          .useDelimiter(",\\s*");
        
         String str;
