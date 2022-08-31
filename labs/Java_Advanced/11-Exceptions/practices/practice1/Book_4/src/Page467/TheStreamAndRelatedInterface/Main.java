@@ -58,13 +58,7 @@ public class Main {
         //summaryStatistics()   returns a summary statistics object that includes various property methods (eg. getCount)
     
         
-        //SEQUENTIAL and PARALLEL STREAMS
-        //By default streams are sequential - produced by the stream() method and processed one element after the next.
-        //Parallel streams utilize multicore processors by breaking the elements into two or more smaller streams,
-        // performs operations on them, and then combines them to create a final result stream.
-        //to create a parrallel stream just use parallelStream() rather than stream().
-        //NOTE: You cannot predict the order in which the elements are processed with PARALLEL STREAMS, as you
-        // cant cant predict the order in which the processor executes the threads.
+        
     }
     
 }
