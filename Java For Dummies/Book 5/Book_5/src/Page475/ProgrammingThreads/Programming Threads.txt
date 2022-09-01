@@ -1,0 +1,24 @@
+THREADS
+
+The Thread class lets you create an object that can be run as a thread in multithreaded 
+java applications.
+It has many constructors and methods... the most important ones are:
+
+Thread()                    Creates an instance of the class.
+Thread(String name)         Creates a Thread object and assigns a name to the thread.
+Thread(Runnable target)     Turns any object that implements an API interface called Runnable, into a thread.
+Thread(Runnable target,     Creates a thread from any object that implements Runnable and assigns the specific name to it.
+ String name)               
+static int activeCount()    Returns the number of active threads.
+static int enumerate(Thread[] t)    Fills the specified array with a copy of each active thread. The return value
+                                    is the number of threads added to the array.
+String getName()            Returns the name of the thread.
+int getPriority()           Returns the thread’s priority.
+void interrupt()            Interrupts this thread.
+boolean isInterrupted()     Checks whether the thread has been interrupted.
+void setPriority(int priority)      Sets the thread’s priority.
+void setName(String name)   Sets the thread’s name.
+static void Sleep           Causes the currently executing thread (int milliseconds) to sleep for the specified number of milliseconds.
+void run()                  Is called when the thread is started. Place the code that you want the thread to execute inside this method.
+void start()                Starts the thread.
+static void yield()         Causes the currently executing thread to yield to other threads that are waiting to execute.
