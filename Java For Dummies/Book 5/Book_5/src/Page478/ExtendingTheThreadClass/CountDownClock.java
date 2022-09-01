@@ -15,13 +15,13 @@ public class CountDownClock extends Thread {
     {
         for (int t = 20; t >= 0; t--) 
         {        
-            System.out.println("T minus " + t);
+            System.out.println("T minus " + t); //counts down from 20 to 0.
             try 
             {
-                Thread.sleep(1000);
+                Thread.sleep(1000);             //sleep() method pauses for 1 second every loop.
             } 
-            catch (InterruptedException e) 
-            {}
+            catch (InterruptedException e)      //sleep() throws 'Interupted Exceptions', so the try/catch
+            {}                                  // statement handles that - if caught it is ignored.
         }
     }
     
