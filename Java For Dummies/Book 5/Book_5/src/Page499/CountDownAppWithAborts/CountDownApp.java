@@ -1,5 +1,5 @@
 /*
-
+Using lock and unlock()
  */
 package Page499.CountDownAppWithAborts;
 
@@ -9,20 +9,18 @@ public class CountDownApp {
 
     public static void main(String[] args) {
         CountDownClock clock = new CountDownClock(20);
-        ArrayList<Runnable> events
-                = new ArrayList<Runnable>();
-        events.add(new LaunchEvent(16,
-                "Flood the pad!", clock));
-        events.add(new LaunchEvent(6,
-                "Start engines!", clock));
-        events.add(new LaunchEvent(0,
-                "Liftoff!", clock));
+        ArrayList<Runnable> events = new ArrayList<>();
+        events.add(new LaunchEvent(16, "Flood the pad!", clock));
+        events.add(new LaunchEvent(6, "Start engines!", clock));
+        events.add(new LaunchEvent(0, "Liftoff!", clock));
         clock.start();
+        
         for (Runnable e : events) {
             new Thread(e).start();
         }
     }
 }
+
 
 interface TimeMonitor {
 
@@ -31,8 +29,9 @@ interface TimeMonitor {
     void abortCountDown();
 }
 
-class CountDownClock extends Thread
-        implements TimeMonitor {
+
+
+class CountDownClock extends Thread implements TimeMonitor {
 
     private int t;
 
@@ -40,8 +39,10 @@ class CountDownClock extends Thread
         this.t = start;
     }
 
-    public void run() {
+    public void run() 
+    {
         boolean aborted = false;
+        
         for (; t >= 0; t--) {
             System.out.println("T minus " + t);
             try {
@@ -60,17 +61,18 @@ class CountDownClock extends Thread
         }
     }
 
+    
     public int getTime() {
         return t;
     }
 
+    
     public synchronized void abortCountDown() {
-        Thread[] threads
-                = new Thread[Thread.activeCount()];
-        Thread.enumerate(threads);
-        for (Thread t : threads) {
-            t.interrupt();
-        }
+        Thread[] threads = new Thread[Thread.activeCount()];    //creates an array of thread objects, thats large enough
+        Thread.enumerate(threads);                              // to hold all active threads. 
+        for (Thread t : threads) {                              //* [Threads.activeCount()] ...returns number of active threads
+            t.interrupt();                                      //* .enumerate(threads)...copies avtive threads to array.
+        }                                                       //* for loop calls .interrupt() on all active threads.
     }
 }
 
@@ -82,8 +84,7 @@ class LaunchEvent implements Runnable {
     private String message;
     TimeMonitor tm;
 
-    public LaunchEvent(int start, String message,
-            TimeMonitor monitor) {
+    public LaunchEvent(int start, String message, TimeMonitor monitor) {
         this.start = start;
         this.message = message;
         this.tm = monitor;
@@ -92,6 +93,7 @@ class LaunchEvent implements Runnable {
     public void run() {
         boolean eventDone = false;
         boolean aborted = false;
+        
         while (!eventDone) {
             try {
                 Thread.sleep(10);
