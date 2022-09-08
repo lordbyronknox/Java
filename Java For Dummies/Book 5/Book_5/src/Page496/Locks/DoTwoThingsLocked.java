@@ -19,6 +19,7 @@ public class DoTwoThingsLocked {
         new DoTwoThingsLocked();
     }
 
+    
     DoTwoThingsLocked() {
         pool.execute(clock);
         pool.execute(clock);

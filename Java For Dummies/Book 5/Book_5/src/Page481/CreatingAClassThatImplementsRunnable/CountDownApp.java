@@ -16,6 +16,7 @@ public class CountDownApp
     {
         Thread clock = new CountDownClock();                //Create an instance of CountDownClock class & assign it to clock.
         Runnable flood, ignition, liftoff;                  //Declare Runnable class variables.
+        
         flood = new LaunchEvent(16, "Flood the pad!");      //create LaunchEvent object, set sleep() till 16 seconds
         ignition = new LaunchEvent(6, "Start engines!");    //...sleep till 6 seconds
         liftoff = new LaunchEvent(0, "Liftoff!");           //...sleep till 0 seconds

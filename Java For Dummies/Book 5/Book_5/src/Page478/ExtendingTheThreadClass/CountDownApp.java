@@ -1,5 +1,5 @@
 /*
-Here we create and start the thread.
+Here we create and start the thread object.
  */
 package Page478.ExtendingTheThreadClass;
 
