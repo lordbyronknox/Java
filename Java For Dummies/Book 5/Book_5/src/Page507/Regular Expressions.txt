@@ -1,0 +1,20 @@
+REGULAR EXPRESSIONS (aka. REGEX)
+
+A simple regex pattern matches a string literal exactly: 
+regex: 		 abc
+string to match: abc
+MATCH!!
+string to match: abcd
+NOT A MATCH
+
+A CHARACTER CLASS represents a particular type of character, rather than a specific character.
+A regex pattern uses 2 types of character class: predefined classes, and custom classes.
+
+REDEFINED:
+. 	Any SINGLE character	(eg. c.t will match any 3 letter word that starts with c, ends with t)
+\d 	Any digit (0–9)		(eg. Birthdate 31-07-77: /d/d-/d/d-/d/d)
+\D 	Any nondigit (anything other than 0–9)
+\s 	Any white-space character (space, tab, new line, return, or backspace) (eg. ..\s.. matches ab	bc)
+\S 	Any character other than a white-space character ( _ , * ]  etc. )
+\w 	Any word character (a–z, A–Z, 0–9, or an underscore)
+\W 	Any character other than a word character
