@@ -1,0 +1,98 @@
+DATE TIME
+
+In Java computers measure time as the number of nanoseconds since midnight, 01/01/1970.
+
+Here are 10 DATE-TIME classes in java.time:
+
+ CLASS 			 What It Represents
+--------------------------------------------------------------------------------------------------------------------
+LocalTime		 A time (hours, minutes, and seconds to nanosecond precision) without an associated
+			 time zone.
+LocalDate 		 A date (year, month, and day) without an associated time zone.
+LocalDateTime 		 A date and time without an associated time zone.
+OffsetTime 		 A time and an offset from UTC (Coordinated Universal Time, also known as Greenwich
+			 Mean Time), such as 12:30:00-8.00, which means the time is 12:30 with an offset of
+			 -8 hours from UTC.
+OffsetDateTime 		 A date and time with an offset value from UTC.
+ZonedDateTime 		 A date and time with an associated time zone, such as America/Los_Angeles.
+MonthDay 		 A month and day without an associated year. You can use a MonthDay object to represent a date such as a birthday, anniversary, or holiday.
+YearMonth 		 A year and month, such as December, 2015. No day, time, or time zone values are associated with the year and month.
+Year 			 A year, such as 2038. No month, day, time, or time zone values are associated
+		 	 with the year.
+Instant 		 A single point of time, represented internally as the number of nanoseconds that have
+			 elapsed since midnight, January 1, 1970. The value assumes a UTC/GMT time offset of 0.
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+The now() method:
+All Date-Time classes have a static now() method, which ceates an object representing the current date and/or time.
+eg.
+	LocalDate date = LocalDate.now();
+or
+	ZonedDateTime datetime = ZonedDateTime.now();
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+of() method
+
+LocalTime       of(int hour, int minute)
+                of(int hour, int minute, int second)
+                of(int hour, int minute, int second, int nanoOfSecond)
+LocalDate       of(int year, int month, int dayOfMonth)
+                of(int year, Month month, int dayOfMonth)
+LocalDateTime   of(int year, int month, int dayOfMonth, int hour, int minute)
+                of(int year, int month, int dayOfMonth, int hour, int minute, int second)
+                of(int year, int month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond)
+                of(int year, Month month, int dayOfMonth, int hour, int minute)
+                of(int year, Month month, int dayOfMonth, int hour, int minute, int second)
+                of(int year, Month month, int dayOfMonth, int hour, int minute, int second, int nanoOfSecond)
+                of(LocalDate date, LocalTime time) OffsetTime of(int hour, int minute, int second, int nanoOfSecond,
+                   ZoneOffset offset)
+                of(LocalTime time, ZoneOffset offset) OffsetDateTime of(int year, int month, int dayOfMonth, int hour, int minute, int
+                   second, int nanoOfSecond, ZoneOffset offset)
+                of(LocalDate date, LocalTime time, ZoneOffset offset)
+                of(LocalDateTime dateTime, ZoneOffset offset) MonthDay of(int month, int dayOfMonth)
+                of(Month month, int dayOfMonth) YearMonth of(int year, int month)
+                of(int year, Month month) Year of(int year)
+
+some of the methods let you specify the month as a month object. (enum)
+eg. 
+    LocalDate date = LocalDate.of(2014,Month.DECEMBER,15);
+
+
+--------------------------------------------------------------------------------------------------------------------
+LocalDate class
+
+methods that create a LocalDate object:
+LocalDate now()                                      Creates a LocalDate object that represents the current date.
+LocalDate of(int year, int month, int dayOfMonth)    Creates a LocalDate object with a given year, month, and day.
+LocalDate of(int year, Month month, int dayOfMonth)  Creates a LocalDate object with a given year, month, and day.
+LocalDate parse(String text)                         Creates a LocalDate object by parsing the text string.
+
+Methods that extract information about a date:
+int getYear()           Returns the year.
+Month getMonth()        Returns the month as a Month object.
+int getMonthValue()     Returns the month as an int from 1 through 12.
+int getDayOfMonth()     Returns the day of the month.
+DayOfWeek getDayOfWeek() Returns the day of the week as a DayOfWeek object.
+int getDayOfYear()      Returns the day of the year.
+int lengthOfMonth()     Returns the number of days in this month.
+int lengthOfYear()      Returns the number of days in this year.
+
+Methods that compare dates:
+boolean isAfter(LocalDate other)  Returns true if other occurs after this date.
+boolean isBefore(LocalDate other) Returns true if other occurs after this date.
+boolean isEqual(LocalDate other)  Returns true if this date and other represent the same date.
+
+Methods that perform date calculations:
+LocalDate plusDays(long days)      Returns a copy of the LocalDate with the specified number of days added.
+LocalDate plusNMonths(long days)   Returns a copy of the LocalDate with the specified number of months added.
+LocalDate plusWeeks(long months)   Returns a copy of the LocalDate with the specified number of weeks added.
+LocalDate plusYears(long days)     Returns a copy of the LocalDate with the specified number of years added.
+LocalDate minusDays(long days)     Returns a copy of the LocalDate with the specified number of days subtracted.
+LocalDate minusMonths(long months) Returns a copy of the LocalDate with the specified number of months subtracted.
+LocalDate minusWeeks(long months)  Returns a copy of the LocalDate with the specified number of weeks subtracted.
+LocalDate minusYears(long years)   Returns a copy of the LocalDate with the specified number of years subtracted.
+long until(LocalDate endDate, ChronoUnit unit)  Returns the difference between this date and the specified date measured in the specified units.
