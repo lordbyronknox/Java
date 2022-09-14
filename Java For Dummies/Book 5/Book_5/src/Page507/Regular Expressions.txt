@@ -10,11 +10,87 @@ NOT A MATCH
 A CHARACTER CLASS represents a particular type of character, rather than a specific character.
 A regex pattern uses 2 types of character class: predefined classes, and custom classes.
 
-REDEFINED:
+-------------------------------------------------------------------------------------------
+PREDEFINED:
 . 	Any SINGLE character	(eg. c.t will match any 3 letter word that starts with c, ends with t)
 \d 	Any digit (0–9)		(eg. Birthdate 31-07-77: /d/d-/d/d-/d/d)
 \D 	Any nondigit (anything other than 0–9)
 \s 	Any white-space character (space, tab, new line, return, or backspace) (eg. ..\s.. matches ab	bc)
 \S 	Any character other than a white-space character ( _ , * ]  etc. )
 \w 	Any word character (a–z, A–Z, 0–9, or an underscore)
-\W 	Any character other than a word character
+\W 	Any character other than a word character (eg. \w\W\w   will match   a_b )
+
+You can also use a space in the regex. (note that it will only check for space/s... not tabs etc).
+-------------------------------------------------------------------------------------------
+
+CUSTOM:
+Just list all the characters you want to include, between square brackets.
+
+eg. 
+regex:  b[aeEiou]t
+matches: bat, bit, bot, but, bet.
+
+NOTE: it is case sensitive. so 'bAt' will not match. but 'bEt' will match.
+
+You can use multiple groups:
+[bB][aei][tT]
+
+Ranges:
+[a-z][0-9]	matches   r2
+
+Multiple ranges in a class:
+[a-zA-Z][0-9]
+[a-zA-Z0-9]
+
+Negation
+start the class with a caret to match any character but the ones specified:
+[^cf][at]	matches	'bat'	does not match 'cat' or 'fat'
+
+-------------------------------------------------------------------------------------------
+
+QUANTIFIERS
+Use quantifiers to specify the number of characters at a certain position.
+
+? 	Zero times or one time (optional character)  (eg.  \d-?\d	matches   1-2 and 12)
+* 	Zero or more times
++ 	One or more times
+{n} 	Exactly n times		(eg.   \d{2}-\d{3}   matches   12-123)	
+{n,} 	At least n times
+{n,m} 	At least n times but no more than m times
+
+
+-------------------------------------------------------------------------------------------
+ESCAPE
+Use the back-slash to escape a character that have special meaning.
+eg. \(a-c\)	matches  (a-c)  does not match a-c
+     (a-c)	matches  a-c	does NOT match (a-c)
+The back-slash itself has special meaning, so to specify a back-slash you use \\ before the \
+eg \d\d\\\d\d	matches  31\07
+
+
+-------------------------------------------------------------------------------------------
+USING PARENTHESES
+You can group characters together using ()
+
+eg. (bla)+	matches:  blabla  and blablabla, but not: bla bla
+The pattern looks for one or more occurances of 'bla'.
+
+eg. (\d\d\d)?-?\d\d\d-\d\d\d\d	matches  011-823-1000 and 823-1000
+The area code is optional.
+
+
+When a grouped character/s in parentheses the text that matches that group is CAPTURED. Captured groups are
+numbered so that they can be called again later in the expression.
+eg.	\w\d-\w\d	matches  r2-d3
+But if you want the second didget to match the first didget you would group the first didget
+and then use \<groups number> for the second didget:
+eg.	\w(\d)-\w\1	matches  r2-d2  and  d3-r3	but does NOT match  r2-d3
+
+-------------------------------------------------------------------------------------------
+PIPE SYMBOL
+The | defines an OR
+eg.  \d\d|\w\w		matches  55, dh, 90, ap etc.
+     (\d\d\w)|(\w)	matches  551, b, f, 121 etc.
+
+
+
