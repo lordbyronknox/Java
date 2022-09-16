@@ -1,5 +1,5 @@
 /*
-App to display thecurrent time using all 10 classes (creating an object of each 
+App to display the current time using all 10 classes (creating an object of each 
 using now().
  */
 package Page539.WorkingWithDatesAndTimes;

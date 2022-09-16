@@ -1,0 +1,12 @@
+JavaFx
+download javafx package: gluonhq.com/products/javafx
+
+Netbeans:
+tools -> libraries -> New Library -> Library Name: <javafx> -> Add JAR/Folder ->
+Browse into JavaFx Lib folder and select all jar files
+click 'Add Jar/Folder' -> OK.
+
+Right Click project -> Properties -> Categories: Libraries -> Classpath (click +), add javafx library.
+Run tab -> Modulepath (Click +), add javafx
+Category: Run -> in VM Options type: --add-modules javafx.controls,javafx.fxml
+OK
