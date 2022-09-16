@@ -14,8 +14,8 @@ public class ClickCounter extends Application {     //extends java.application.A
                                                     // specifying that this is a javafx application.
     public static void main(String[] args) 
     {
-        launch(args);
-    }
+        launch(args);     //launch() creates an instance of ClickCounter class then calls start()
+    }                     // and passes the primaryStage variable to it as an arg.
     
     Button btn;           //class variable of type Button declared
     Label lbl;            //class variable of type Label declared
@@ -43,6 +43,7 @@ public class ClickCounter extends Application {     //extends java.application.A
         primaryStage.show();
     }
 
+    //method that changes the label text using setText()
     public void buttonClick() {
         iClickCount++;
         if (iClickCount == 1) {
