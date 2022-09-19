@@ -26,7 +26,7 @@ Instant 		 A single point of time, represented internally as the number of nanos
 
 
 The now() method:
-All Date-Time classes have a static now() method, which ceates an object representing the current date and/or time.
+All Date-Time classes have a static now() method, which creates an object representing the current date and/or time.
 eg.
 	LocalDate date = LocalDate.now();
 or

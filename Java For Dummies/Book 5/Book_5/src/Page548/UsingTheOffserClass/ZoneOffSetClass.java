@@ -26,7 +26,7 @@ public class ZoneOffSetClass
         
         //or specify the offset as a string using of():
         ZoneOffset zs = ZoneOffset.of("-08:00");        //You must provide 2 didgets for each unit
-        System.out.println(zs);                         // of time (ie. hours, minutes, seconds...)
+        System.out.println(zs);                         // of time (ie. hours, minutes...)
         
         //once you have a ZoneOffset object you can use it to create an OffsetTime:
         OffsetTime time = OffsetTime.of(10, 30, 0, 0, zs);
