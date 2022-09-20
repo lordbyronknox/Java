@@ -45,15 +45,19 @@ public class ClickCounterExit extends Application {
         VBox pane = new VBox(10);
         pane.getChildren().addAll(btnClickMe, btnClose);
         pane.setAlignment(Pos.CENTER);
+        System.out.println(pane.getChildren().toString());
 // Add the layout pane to a scene
         Scene scene = new Scene(pane, 250, 150);
 // Finish and show the stage
         primaryStage.setScene(scene);
         primaryStage.setTitle("Click Counter");
-        primaryStage.setOnCloseRequest(e -> 
-        {
-            e.consume();
-            btnClose_Click();
+        
+//When the x (close window) is clicked a 'CloseRequest' event is generated. If the event handler 
+//does not 'consume' that request JavaFX will close the stage automatically.  
+        primaryStage.setOnCloseRequest(e ->     
+        {                                        
+            e.consume();        //closeRequest event consumed (i.e cancelled)
+            btnClose_Click();   //method called to handle the close request.
         });
         primaryStage.show();
     }
@@ -72,6 +76,8 @@ public class ClickCounterExit extends Application {
         }
     }
 
+//method that creates an Alert, giving the user an option to quit or not, and calls stage.close()
+//if the YES button is clicked.    
     public void btnClose_Click() 
     {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to quit?",

@@ -130,3 +130,68 @@ eg.
         // The user clicked OK!
     }
 
+
+---------------------------------------------------------------------------------
+
+WORKING WITH LAYOUT PANES
+
+Layout panes are special classes that determine where each component/node appear in it's frame/panel.
+Their sole purpose is to control the arrangement of nodes that appear in a scene.
+
+Here are 5 JavaFX layout panes:
+HBox:     arranges nodes horizontally (one next to the other in rows)
+VBox:     arranges nodes vertically (one on top of the other in columns)
+FlowPane: arranges nodes next to each other, until it runs out of space. Then it
+          wraps/starts at next row/column. (can be configured to arrange in rows or columns)
+Border:   Divides the pane into 5 regions, Top, Left, Center, Right, Bottom.
+          When you add nodes you can specify the region you would like them placed.
+GridPane: Divides the pane into a grid, letting you control the arrangement in rows & columns.
+
+
+Creating layout panes:
+1. Create the controls or other nodes you want to add to the pane.
+   (eg. create the buttons, set their texts, .setOnAction())
+2. Create a layout pane
+   eg,   HBox pane = new HBox();
+3. Fine-Tune the optional settings used by the layout pane.
+   eg   ...new HBox(10);     ->creates a 10 pixel space between controls.
+4. Add each of the nodes that will appear in the layout pane.
+   Note: you must first call .getChildren() to get a list of all nodes that have been created,
+   and then add the nodes by calling addAll(<node1>, <node2>)
+   eg.  pane.getChildren().addAll(btnOK, btnCancel);
+5. Create a scene, specifying the layout pane as the scene's root node.
+   eg.  Scene scene = new Scene(pane, 300, 300);
+
+Combining layout panes: (nodes within nodes).
+You can combine layout panes by creating placing various panes inside a pane.
+eg. You could have two VBox panes, one on the left and one on the right, inside a
+    Border pane. 
+
+
+HBox Layout
+[Arranges nodes in a horizontal row]
+The easiest way to create a HBox is to first create the nodes, and then create the
+HBox, passing the nodes as arguments.
+eg.     Button btn1 = new Button("Button 1");
+        Button btn2 = new Button("Button 2");
+        Hbox hbox = new HBox(btn1, btn2);
+
+
+HBox Constructors and Methods:
+Constructor             Description
+HBox()                  Creates an empty HBox.
+HBox(double spacing)    Creates an empty HBox with the specified spacing.
+HBox(Node... children)  Creates an HBox with the specified child nodes. This constructor lets
+                        you create an HBox and add child nodes to it at the same time.
+HBox(double spacing, Node... children)    Creates an HBox with the specified spacing and child nodes.
+
+Method                                  Description
+ObservableList<Node> getChildren()      Returns the collection of all child nodes that have been added 
+                                        to the HBox. The collection is returned as an ObservableList type, 
+                                        which includes the method addAll, letting you add one or more 
+                                        nodes to the list.
+static void setAlignment(Pos alignment)     Sets the alignment for child nodes within the HBox.
+static void setHgrow(Node child, Priority priority)     Sets the growth behavior of the given child node.
+static void setMargin(Node child, Insets value)         Sets the margins for a given child node. 
+void setPadding(Insets value)           Sets the padding around the inside edges of the Hbox.
+void setSpacing(double value)           Sets the spacing between nodes displayed within the HBox.
