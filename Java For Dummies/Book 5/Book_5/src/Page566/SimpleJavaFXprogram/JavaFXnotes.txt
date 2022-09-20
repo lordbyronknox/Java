@@ -1,0 +1,132 @@
+Stage (window) -> Scene (?) -> Pane -> Controls
+(every stage must have a scene).
+
+---------------------------------------------------------------------------------
+STAGE
+
+Represented by the Stage class.
+Top most container in which a javaFx user interface appears. 
+(eg In Windows/Mac it is a window. On a smartphone it is usually the full screen)
+When a JavaFx application is launched, a stage (known as 'primary stage') is created...
+and passed to the start() method as a parameter. 
+eg.  start(primaryStage)
+The stage houses the scene, which contains the controls and/or other user-interface node.
+
+COMMONLY USED METHODS OF THE STAGE CLASSES
+void close()                         Closes the stage.
+void initModality(Modality modality) Sets the modality of the stage. This method must be called 
+ (modality: the mode of something)   before the show method is called. 
+                                     The modality can be one of the following:
+                                     Modality.NONE
+                                     Modality.APPLICATION_MODAL
+                                     Modality.WINDOW_MODAL
+void initStyle(StageStyle style)     Sets the style for the stage. This method must be called
+                                     before the show method is called. 
+                                     The style can be one of the following:
+                                     StageStyle.DECORATED
+                                     StageStyle.UNDECORATED
+                                     StageStyle.TRANSPARENT
+                                     StageStyle.UNIFIED
+                                     StageStyle.UTILITY
+void getMaxHeight(double maxheight)    Gets the maximum height for the stage.
+void getMaxWidth(double maxwidth)      Gets the maximum width for the stage.
+void getMinHeight(double maxheight)    Gets the minimum height for the stage.
+void getMinWidth(double maxwidth)      Gets the minimum width for the stage.
+void setFullScreen(boolean fullscreen) Sets the fullscreen status of the stage.
+                                       (full screen, with no buttons/title bar. Has 'exit full screen message)
+void setIconified(boolean iconified)   Sets the iconified status of the stage. (minimized to icon)
+void setMaximized(boolean maximized)   Sets the maximized status of the stage. 
+                                       (full screen with title bar, restore, minimize and close buttons) 
+void setMaxHeight(double maxheight)    Sets the maximum height for the stage.
+void setMaxWidth(double maxwidth)      Sets the maximum width for the stage.
+void setMinHeight(double maxheight)    Sets the minimum height for the stage.
+void setMinWidth(double maxwidth)      Sets the minimum width for the stage.
+void setResizable(boolean resizable)   Sets the fullscreen status of the stage.
+void setScene(Scene scene)             Sets the scene to be displayed on the stage.
+void setTitle(String title)            Sets the title to be displayed in the stage’s title bar, if a
+                                       title bar is visible.
+void show()                            Makes the stage visible.
+void showAndWait()                     Makes the stage visible and then waits until the stage is
+                                       closed before continuing.
+void toFront()                         Forces the stage to the foreground.
+void toBack()                          Forces the stage to the background.
+
+---------------------------------------------------------------------------------
+
+SCENE
+
+Every JavaFX application uses one or more Scene objects to hold the user interface controls.
+
+Commonly Used Constructors and Methods of the Scene class:
+
+Constructor                 Description
+Scene(Parent root)          Creates a new scene with the specified root node
+Scene(Parent root, double width, double height)   Creates a new scene with the specified root node,
+                                                  width, and height.
+
+Method                      Description
+double getHeight()          Gets the height of the scene
+double getWidth()           Gets the width of the scene
+double getX()               Gets the horizontal position of the scene
+double getY()               Gets the vertical position of the screen
+void setRoot(Parent root)   Sets the root node
+
+
+---------------------------------------------------------------------------------
+
+CREATING AN ALERT BOX
+Display a basic message box using the Alert class (similar to the JOptionPane class)
+
+Commonly Used Constructors and Methods of the Alert class:
+Constructor                 Description
+Alert(Alert.AlertType)      Creates a new alert of the specified type
+
+Alert(Alert.AlertType, String text)  
+                            Creates a new alert of the specified type and sets the message text.
+
+Alert(Alert.AlertType, String text, ButtonType type...)  
+                            Creates a new alert and sets the buttons to be displayed.
+
+Method                              Description
+void setTitle(String text)          Sets the title
+Optional<ButtonType> showAndWait()  Shows the alert and waits for the user’s response, which is 
+                                    returned as a ButtonType object.
+
+
+The AlertType parameter lets you specify one of several types of Alert dialogs:
+»» AlertType.CONFIRMATION, which prompts the user to confirm an action.
+»» AlertType.ERROR, which display an error message.
+»» AlertType.INFORMATION, which displays an information dialog box.
+»» AlertType.WARNING, which displays a warning message.
+»» AlertType.NONE, which display a generic alert dialog.
+
+You can control what buttons appear on the Alert box by using the optional
+ButtonType parameter. You can choose from among the following types of buttons:
+»» ButtonType.APPLY
+»» ButtonType.CANCEL
+»» ButtonType.CLOSE
+»» ButtonType.FINISH
+»» ButtonType.NEXT
+»» ButtonType.NO
+»» ButtonType.OK
+»» ButtonType.PREVIOUS
+»» ButtonType.YES
+
+eg. snippet:
+
+Alert a = new Alert(Alert.AlertType.INFORMATION, "Are you certain?", ButtonType.YES, ButtonType.NO);
+
+In this example, the Alert box will include both a YES and a NO button.
+To determine which button the user clicked you must test the value returned by the
+'showAndWait()' method. This value is an object of type 'Optional' (since the user can close the
+dialog box without clicking the buttons)
+Test whether the user clicked a button by calling the 'isPresent()' method.
+Then call the 'get()' method to retrieve the actual result.
+eg.
+    Alert a = new Alert(Alert.AlertType.INFORMATION, "Are you certain?", ButtonType.YES, ButtonType.NO);
+    Optional<ButtonType> r = a.showAndWait();
+    if (r.isPresent() && r.get() == ButtonType.YES)
+    {
+        // The user clicked OK!
+    }
+
