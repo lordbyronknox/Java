@@ -45,7 +45,6 @@ public class ClickCounterExit extends Application {
         VBox pane = new VBox(10);
         pane.getChildren().addAll(btnClickMe, btnClose);
         pane.setAlignment(Pos.CENTER);
-        System.out.println(pane.getChildren().toString());
 // Add the layout pane to a scene
         Scene scene = new Scene(pane, 250, 150);
 // Finish and show the stage
