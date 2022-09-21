@@ -190,8 +190,201 @@ ObservableList<Node> getChildren()      Returns the collection of all child node
                                         to the HBox. The collection is returned as an ObservableList type, 
                                         which includes the method addAll, letting you add one or more 
                                         nodes to the list.
-static void setAlignment(Pos alignment)     Sets the alignment for child nodes within the HBox.
+static void setAlignment(Pos alignment)                 Sets the alignment for child nodes within the HBox.
 static void setHgrow(Node child, Priority priority)     Sets the growth behavior of the given child node.
 static void setMargin(Node child, Insets value)         Sets the margins for a given child node. 
 void setPadding(Insets value)           Sets the padding around the inside edges of the Hbox.
 void setSpacing(double value)           Sets the spacing between nodes displayed within the HBox.
+
+----
+The Pos enumeration:
+Constant            Vertical Alignment      Horizontal Alignment
+Pos.TOP_LEFT        Top                     Left
+Pos.TOP_CENTER      Top                     Center
+Pos.TOP_RIGHT       Top                     Right
+Pos.CENTER_LEFT     Center                  Left
+Pos.CENTER          Center                  Center
+Pos.CENTER_RIGHT    Center                  Right
+Pos.BOTTOM_LEFT     Bottom                  Left
+Pos.BOTTOM_CENTER   Bottom                  Center
+Pos.BOTTOM_RIGHT    Bottom                  Right
+Pos.BASELINE_LEFT   Baseline                Left
+Pos.BASELINE_CENTER Baseline                Center
+Pos.BASELINE_RIGHT  Baseline                Right
+----
+
+SPACING
+You can also provide spacing as a parameter:
+NOTE: this only provides spacing between the nodes, not the perimeter.
+        Hbox hbox = new HBox(10, btn1, btn2);
+
+Or add spacing afterwards:
+        HBox.setSpacing(10);
+
+Add spacing around the perimeter of the layout pane:
+USe .setPadding(), which takes an Inserts object as the parameter.
+Insert() represents the size of the padding from each of the corners of the pane.
+        hbox.setPadding(new Inserts(10));               //uniform padding of 10 pixels
+        hbox.setPadding(new Insert(20, 10, 20, 10));    //set different padding for each edge.
+                                                          Top and Bottom = 20
+                                                          Left and Right = 10
+
+Add spacing with Margins:
+You can also create margins around each node, which allows you to set different margin
+size for each node in a layout pane.
+.setMargin(<node>, <Insets object>)
+        hbox.setMargin(btn1, new Insets(10));
+
+Add spacing by Growing Nodes.
+Yo can create a node who's sole purpose is to is to add space between nodes.
+* Here you create a spacer object (like a button)...
+* Configure the spacer by calling the static HBox.setHgrow() method and pass the spacer as the first arg,
+  and PRIORITY as the second arg.
+* You then create the layout pane and add the spacer to the pane as you would a button.
+
+PRIORITY ENUM:
+Priority.NEVER  Indicates that the width of the node should never be adjusted to fill the available
+                space in the pane. This is the default setting. Thus, by default, nodes are not
+                resized based on the size of the layout pane that contains them.
+Priority.ALWAYS Indicates that the width of the node should always be adjusted if necessary to
+                fill available space in the pane. If you set two or more nodes to ALWAYS, the
+                adjustment will be split equally among each of the nodes.
+Priority.SOMETIMES Indicates that the node’s width may be adjusted if necessary to fill out the pane.
+                However, the adjustment will be made only if there are no other nodes that specify ALWAYS.
+
+        Region spacer = new Region();          //create the spacer
+        HBox.setHgrow(spacer, PRIORITY.ALWAYS)  //pass spacer and PRIORITY enum to .setHgrow().
+        HBox hbox = new HBox(10, btn1, btn2, spacer, btn3);     //add btns & spacer to layout pane.
+
+
+
+
+USING THE VBOX LAYOUT
+Same as HBox.
+
+Differences:
+.setVgrow()
+VBox()  (constructor)
+.setAlignment(Pos.CENTERED)
+
+
+
+--------------------------------------------------------------------------------
+MAKING NODES THE SAME WIDTH
+
+You can set the width of a button using the .setMaxWidth() method,
+which takes a Double enum as an arg.
+eg. 
+If you have three buttons of different widths you can do the following
+which will set the width of each button to the width of the widest button:
+    btn1.setMaxWidth(Double.MAX-VALUE);
+    btn2.setMaxWidth(Double.MAX-VALUE);
+    btn3.setMaxWidth(Double.MAX-VALUE);
+
+--------------------------------------------------------------------------------
+USING THE FLOW LAYOUT
+
+Constructors and Most common methods:
+
+Constructor                         Description
+FlowPane()                          Creates an empty horizontal flow layout with both the
+                                    horizontal and vertical gaps set to zero.
+FlowPane(double hgap, double vgap)  Creates an empty horizontal flow layout with the
+                                    specified horizontal and vertical gaps.
+FlowPane(double hgap, double vgap, Node... children)
+Creates a horizontal flow layout with the specified horizontal and vertical gaps and populated with the
+specified child nodes.
+FlowPane(Node... children)          Creates a horizontal flow layout with both the horizontal
+                                    and vertical gaps set to zero and populated with the specified child nodes.
+
+Note: In each of the following constructors, Orientation can be Orientation.HORIZONTAL or
+Orientation.VERTICAL.
+FlowPane(Orientation orientation)   Creates an empty flow layout with the specified
+                                    orientation and both the horizontal and vertical gaps set to zero.
+
+FlowPane(Orientation orientation, double hgap, double vgap)
+Creates an empty flow layout with the specified orientation and the specified horizontal and vertical gaps.
+
+FlowPane(Orientation orientation, double hgap, double vgap, Node... children)
+Creates a flow layout with the specified orientation and horizontal and vertical gaps, populated with the
+specified children.
+
+FlowPane(Orientation orientation, Node... children)
+Creates a flow layout with the specified orientation and both the horizontal and vertical gaps set to zero,
+populated with the specified children.
+
+Method                                  Description
+ObservableList<Node> getChildren()      Returns the collection of all child nodes. The collection is
+                                        returned as an ObservableList type, which includes the method 
+                                        addAll, letting you add one or more nodes to the list.
+void setAlignment(Pos alignment)        Sets the alignment for nodes within the rows and columns.
+void setColumnAlignment(Pos alignment)  Sets the alignment for nodes within the columns.
+
+
+--------------------------------------------------------------------------------
+USING THE BRORDERPANE LAYPOUT
+
+Constructors and most common methods:
+
+Constructor                 Description
+BorderPane()                Creates an empty border layout.
+BorderPane (Node center)    Creates a border layout with the specified center node.
+BorderPane (Node center, Node top, Node right, Node bottom, Node left)
+Creates a border layout with the specified center, top, right, bottom, and left nodes.
+
+Method                      Description
+void setCenter(Node node)   Sets the center node.
+void setTop(Node node)      Sets the top node.
+void setRight(Node node)    Sets the right node.
+void setBottom(Node node)   Sets the bottom node.
+void setLeft(Node node)     Sets the left node.
+void setAlignment(Pos alignment)                  Sets the alignment for nodes within border pane.
+static void setMargin(Node child, Insets value)   Sets the margins for a given child node.
+
+eg.
+        VBox vbox = new VBox(btn1, btn2, btn3);  //VBox created & buttons added
+        BorderPane pane = new BorderPane();      //BorderPane layout created
+        pane.setCenter(vbox);                    //vbox added to the center of the BorderPane.
+
+        OR
+        You can add add panes (that already exist) like this:
+        BorderPane pane = new BorderPane(myCenter, myTop, myRight, myBottom, my Left);
+
+NOTE: If you dont add a pane to a region that pane is not rendered.
+      The regions are sized according to their content.
+      If the user expands the window sideways, the top, center and bottom regions expand.
+      If the user expands the window vertically the left, center and right expand.
+      The nodes you add to the regions of a BorderPane will almost always be other layout panes.
+
+
+
+--------------------------------------------------------------------------------
+THE GRIDPANE LAYOUT
+
+Pane arranged in a grid (rows and columns).
+You can specify which cell you want each component to appear.
+You can create components that span multiple rows or columns.
+You can stretch the component to fill the cell. (horizontally, vertically or both).
+You can specify the component's position within it's cell (centered, left etc.)
+
+SKETCH OUT A PLAN:
+Before you create a grid pane, draw a sketch showing how you want the components to appear
+in the panel.
+Then draw rows and columns around the components and number each cell - starting with
+0 for both the row and column in the top left corner.
+After that list out each component, the x (row) number, y (column) number, Alignment, and span.
+eg.
+Component         x   y   Alignment Spans
+Label "Name"      0   0   Right
+Label "Phone"     0   1   Right
+Label "Address"   0   2   Right
+Name text field   1   0   Left      2
+Phone text field  1   1   Left      2
+
+Then you can write the code to put each component in its proper place.
+
+CREATING A GRID PANE.
+eg.
+    Label lblName = new Label("Name");      //create a label.
+    GridPane grid = new GridPane();         //create a GridPane;
+    grid.add(lblName, 0, 0);                //add the label to top left cell.
