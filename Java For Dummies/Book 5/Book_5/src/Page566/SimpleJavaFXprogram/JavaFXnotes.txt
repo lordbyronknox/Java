@@ -388,3 +388,8 @@ eg.
     Label lblName = new Label("Name");      //create a label.
     GridPane grid = new GridPane();         //create a GridPane;
     grid.add(lblName, 0, 0);                //add the label to top left cell.
+
+    grid.addRow(0, btn1, btn2);             //adding an entire row.
+eg. 
+    grid.setColumnSpan(btn, 2);             //spans the button over two colums.
+    grid.setRowSpan(btn, 2);                //...over two rows.
