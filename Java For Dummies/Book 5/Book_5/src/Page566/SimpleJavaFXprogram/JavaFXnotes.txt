@@ -393,3 +393,116 @@ eg.
 eg. 
     grid.setColumnSpan(btn, 2);             //spans the button over two colums.
     grid.setRowSpan(btn, 2);                //...over two rows.
+
+
+
+--------------------------------------------------------------------------------
+CHOOSING FROM A LIST
+
+Choice boxes:
+- a control that lets you choose an item from a drop down list.
+- Uses the ChoiceBox class to create a choicebox.
+
+ChoiceBox<String> choice = new ChoiceBox<String>();     //create the box
+choice.getItems().add("Happy");                         //add an item
+choice.getItems()addAll("Sneezy", "Dopey");             //add multiple items.
+choice.getItems().remove("Dopey");                      //remove an item.
+choice.getItems().addAll(list);                         //add a collection of items.
+
+
+Listening for selection changes:
+Often you would like your program to respond immediately when the user makes a change,
+and not only when he presses the OK button. 
+Because list controls dont generate an action event when clicked the ChoiceBox class doesnt have a
+setOnAction() method.
+So you must set up a 'change listener' as follows:
+1. Get selection model -        getSelectionModel()
+2. Get selectedItem property -  selectedItemProperty()
+3. Add a change listener -      addListener(v, oldValue, newValue)
+                                v = property whose value has changed
+                                oldvalue = previous value of property
+                                newValue = new value of property
+eg.
+    choice.getSelectionModel().selectedItemProperty()
+    .addListener( (v, oldValue, newValue) -> lbl.setText(newValue); );      //lambda used to call setText()
+
+
+
+COMBO BOXES:
+Same as choice box, but a bit more advanced:
+- lets you choose the number of items displayed when the list is show. 
+  (adds a scroll bar to scroll further down the list)
+- Includes a text field, allowing the user to enter the value rather than selecting it from the list.
+- Fires an action event when the user changes the selection. (making setting up an action event easier)
+
+ComboBox<String> cbox = new ComboBox<String>();     //create a combo box
+cbox.getItems().addAll("Bashful", "Doc", "Dopey");  //add items
+cbo.setEditable(true);                              //change the ability of the user to edit the list.
+cbo.setVisibleRows(10);                             //limit the number of items displayed
+cbo.setPromptText("Make a choice");                 //set default text to be displayed in text field.
+
+Getting the selected item by calling .getValue():
+(Typically done in the event handler)
+eg.
+    public void btnOK_Click()
+    {
+        String message = "You chose ";
+        message += cbo.getValue();
+        Alert a = new Alert(Alert.AlertType.INFORMATION, msg);
+        a.setTitle("Your Choice");
+        a.showAndWait();
+    }
+
+OR... use the .contains() method to see if the selection is from the list, or not (i.e. a string 
+entered by the user instead of selected from the list). 
+
+
+
+LIST VIEWS
+Displays a list of objects within a box.  Can select one of more item, depending on configuration.
+As with combo box, a scroll is added if list extends past view.
+Differs from combo box:
+- no text field for the user to edit the selection.
+- Does not drop down. (displayed in a box whose size you specify).
+- Items can be arranged vertically or horizontally.
+- Can select more than one item by holding control + clicking selected items.
+
+
+ListView list = new ListView();                     //create a ListView object.
+list.getItems().addAll("Sausage", "Pepperoni");     //add to listview
+list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);  //allows multiple selections
+list.setOrientation(Orientation.HORIZONTAL);        //set list to HORIZONTAL.
+toppings = list.getSelectionModel().getSelectedItems();  //get selected items.
+
+
+TREE VIEWS
+Displays items in a tree view (similar to the folder structure on your computer)
+
+Node: 
+    Each element in the tree is a node. Each node in a tree is created from
+    TreeItem class. The TreeItem class is a generic class, so you can associate a
+    type with it. Thus, you can create a tree using objects of any type you wish,
+    including types you create yourself.
+Root node: 
+    A root node is the starting node for a tree. Every tree must have
+    one — and only one — root node. When you create a tree component, you
+    pass the root node to the TreeView constructor.
+Child node: 
+    The nodes that appear immediately below a given node are that node’s child nodes. 
+    A node can have more than one child.
+Parent node: 
+    The node immediately above a given node is that node’s parent
+    node. Every node except the root node must have one — and only one — parent.
+Sibling nodes: 
+    Sibling nodes are children of the same parent.
+Leaf node: 
+    A leaf node is one that doesn’t have any children.
+Path: 
+    A path contains the node and all its ancestors — that is, its parent, its
+    parent’s parent, and so on — all the way back to the root.
+Expanded node: 
+    An expanded node is one whose children are visible.
+Collapsed node: 
+    A collapsed node is one whose children are hidden.
+
+
