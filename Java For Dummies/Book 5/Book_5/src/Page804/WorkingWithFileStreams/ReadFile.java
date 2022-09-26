@@ -23,13 +23,16 @@ public class ReadFile {
         }
     }
 
+    
+//method that creates and returns a BufferedReader object ('in') that can read the file.
     private static BufferedReader getReader(String name) {
         BufferedReader in = null;
         try {
             File file = new File(name);
-            in = new BufferedReader(
-                    new FileReader(file));
-        } catch (FileNotFoundException e) {
+            in = new BufferedReader(new FileReader(file));
+        } 
+        catch (FileNotFoundException e) 
+        {
             System.out.println(
                     "The file doesn't exist.");
             System.exit(0);
@@ -37,6 +40,9 @@ public class ReadFile {
         return in;
     }
 
+
+//method that reads each line from the reader and returns a Movie object with
+// title, year and price properties.
     private static Movie readMovie(BufferedReader in) {
         String title;
         int year;
@@ -60,6 +66,8 @@ public class ReadFile {
         }
     }
 
+    
+//inner Movie class to create Movie objects    
     private static class Movie {
 
         public String title;
