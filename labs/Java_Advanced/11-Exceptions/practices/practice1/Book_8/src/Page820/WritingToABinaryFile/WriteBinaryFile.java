@@ -1,19 +1,20 @@
 /*
-
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Page811.WritingToATextFile;
+package Page820.WritingToABinaryFile;
 
 import java.io.*;
 
-public class WriteFile {
+public class WriteBinaryFile {
 
     public static void main(String[] args) {
         Movie[] movies = getMovies();
-        PrintWriter out = openWriter("movies2.txt");
+        DataOutputStream out = openOutputStream("C:\\Users\\byron\\Desktop\\Java\\Java\\labs\\Java_Advanced\\11-Exceptions\\practices\\practice1\\Book_8\\src\\Page820\\WritingToABinaryFile\\movies.dat");
         for (Movie m : movies) {
             writeMovie(m, out);
         }
-        out.close();
+        closeFile(out);
     }
 
     private static Movie[] getMovies() {
@@ -41,27 +42,42 @@ public class WriteFile {
         return movies;
     }
 
-    private static PrintWriter openWriter(String name) {
+    private static DataOutputStream
+            openOutputStream(String name) {
+        DataOutputStream out = null;
         try {
             File file = new File(name);
-            PrintWriter out
-                    = new PrintWriter(
-                            new BufferedWriter(
-                                    new FileWriter(file)), true);
+            out = new DataOutputStream(
+                    new BufferedOutputStream(
+                            new FileOutputStream(file)));
             return out;
         } catch (IOException e) {
-            System.out.println("I/O Error");
+            System.out.println(
+                    "I/O Exception opening file.");
             System.exit(0);
         }
-        return null;
+        return out;
     }
 
-    private static void writeMovie(Movie m, PrintWriter out)
-             {
-        String line = m.title;
-        line += "\t" + Integer.toString(m.year);
-        line += "\t" + Double.toString(m.price);
-        out.println(line);
+    private static void writeMovie(Movie m, DataOutputStream out) {
+        try {
+            out.writeUTF(m.title);
+            out.writeInt(m.year);
+            out.writeDouble(m.price);
+        } catch (IOException e) {
+            System.out.println(
+                    "I/O Exception writing data.");
+            System.exit(0);
+        }
+    }
+
+    private static void closeFile(DataOutputStream out) {
+        try {
+            out.close();
+        } catch (IOException e) {
+            System.out.println("I/O Exception closing file.");
+            System.exit(0);
+        }
     }
 
     private static class Movie {
