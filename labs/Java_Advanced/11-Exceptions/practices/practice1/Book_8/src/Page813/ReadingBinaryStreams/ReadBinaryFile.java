@@ -43,10 +43,10 @@ public class ReadBinaryFile
                     System.out.println(msg);
                 }
             }
-            closeFile(in);
+            closeFile(in);      //when loop ends the file is closed.
         }
 
-//method that 
+//method that creates a DataInputStream object for the file name passed as arg.
         private static DataInputStream getStream(String name) {
             DataInputStream in = null;
             try {
@@ -56,12 +56,13 @@ public class ReadBinaryFile
                                 new FileInputStream(file)));
             } catch (FileNotFoundException e) {
                 System.out.println("The file doesn't exist.");
-                System.exit(0);
+                System.exit(0);                                 //program exits if any exceptions are thrown.
             }
             return in;
         }
 
-        //method that 
+        //method that reads the data for a single movie and creates a Movie object.
+        //Returns null if it reaches the end of the file.
         private static Movie readMovie(DataInputStream in) {
             String title = "";
             int year = 0;;
@@ -79,6 +80,7 @@ public class ReadBinaryFile
             return new Movie(title, year, price);
         }
 
+        //method to close the input stream
         private static void closeFile(DataInputStream in) {
             try {
                 in.close();
@@ -88,6 +90,7 @@ public class ReadBinaryFile
             }
         }
 
+        //inner class that defines movies
         private static class Movie {
 
             public String title;

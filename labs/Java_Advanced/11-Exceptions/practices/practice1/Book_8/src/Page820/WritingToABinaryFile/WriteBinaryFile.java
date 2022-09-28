@@ -1,7 +1,15 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Writing to a binary file.
+
+FileOutputStream class      - connects to a File object and creates an output stream that can write to the file.
+new FileOutputStream(<File object>)
+
+BufferedOutputStream class  - connects to a FileOutputStream and adds output buffering.
+new BufferedOutputStream(<FileOutputStream object>)
+
+DataOutputStream class      - adds the ability to write primitive data types and strings to a stream.
+new DataOutputStream(<BufferedOutputStream object>)
+*/
 package Page820.WritingToABinaryFile;
 
 import java.io.*;
@@ -19,39 +27,36 @@ public class WriteBinaryFile {
 
     private static Movie[] getMovies() {
         Movie[] movies = new Movie[10];
-        movies[0] = new Movie("It's a Wonderful Life",
-                1946, 14.95);
-        movies[1] = new Movie("Young Frankenstein",
-                1974, 16.95);
-        movies[2] = new Movie("Star Wars",
-                1977, 17.95);
-        movies[3] = new Movie("The Princess Bride",
-                1987, 16.95);
-        movies[4] = new Movie("Glory",
-                1989, 14.95);
-        movies[5] = new Movie("The Game",
-                1997, 14.95);
-        movies[6] = new Movie("Shakespeare in Love",
-                1998, 19.95);
-        movies[7] = new Movie("Zombieland",
-                1997, 18.95);
-        movies[8] = new Movie("The King's Speech",
-                1997, 19.95);
-        movies[9] = new Movie("Star Trek Into Darkness",
-                1997, 19.95);
+        movies[0] = new Movie("It's a Wonderful Life", 1946, 14.95);
+        movies[1] = new Movie("Young Frankenstein", 1974, 16.95);
+        movies[2] = new Movie("Star Wars", 1977, 17.95);
+        movies[3] = new Movie("The Princess Bride", 1987, 16.95);
+        movies[4] = new Movie("Glory", 1989, 14.95);
+        movies[5] = new Movie("The Game", 1997, 14.95);
+        movies[6] = new Movie("Shakespeare in Love", 1998, 19.95);
+        movies[7] = new Movie("Zombieland", 1997, 18.95);
+        movies[8] = new Movie("The King's Speech", 1997, 19.95);
+        movies[9] = new Movie("Star Trek Into Darkness", 1997, 19.95);
         return movies;
     }
 
-    private static DataOutputStream
-            openOutputStream(String name) {
+    private static DataOutputStream openOutputStream(String name) 
+    {
         DataOutputStream out = null;
         try {
+            File file = new File(name);                     //file: represents the file itself
+            out = new DataOutputStream(                     //out:  the dataoutputstream (adds functionality)
+                    new BufferedOutputStream(               //passed as arg to 'out'. (adds functionality)
+                            new FileOutputStream(file)));   //passed as arg to BufferedOutputStream object, connects
+                                                            // the file to the outputstream.
+            /*  OR without nesting:
             File file = new File(name);
-            out = new DataOutputStream(
-                    new BufferedOutputStream(
-                            new FileOutputStream(file)));
+            FileOutputStream fos = new FileOutputStream(file);
+            BufferedOutputStream bos = new BufferedOutputStream(fos);
+            DataOutputStream out = new DataOutputStream(bos);
+*/            
             return out;
-        } catch (IOException e) {
+        } catch (IOException e) {                   //catches eceptions and exits the program.
             System.out.println(
                     "I/O Exception opening file.");
             System.exit(0);
@@ -59,7 +64,9 @@ public class WriteBinaryFile {
         return out;
     }
 
-    private static void writeMovie(Movie m, DataOutputStream out) {
+    //method that calls the different write methods to write to the file.
+    //the buffer method accumulates data before writing. you can force it to write by calling 'out.flush()'
+    private static void writeMovie(Movie m, DataOutputStream out) {  //(<movie to be written>, <output stream to write to the file>)
         try {
             out.writeUTF(m.title);
             out.writeInt(m.year);
@@ -71,6 +78,7 @@ public class WriteBinaryFile {
         }
     }
 
+    //when finished writing to a file close the file by calling out.close()
     private static void closeFile(DataOutputStream out) {
         try {
             out.close();
