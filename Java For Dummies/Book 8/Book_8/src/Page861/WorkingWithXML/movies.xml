@@ -20,3 +20,24 @@
         <Title>Glory</Title>
         <Price>14.95</Price>
     </Movie>
+    <Movie year="1997">
+        <Title>The Game</Title>
+        <Price>14.95</Price>
+    </Movie>
+    <Movie year="1998">
+        <Title>Shakespeare in Love</Title>
+        <Price>19.95</Price>
+    </Movie>
+    <Movie year="2009">
+        <Title>Zombieland</Title>
+        <Price>18.95</Price>
+    </Movie>
+    <Movie year="2010">
+        <Title>The King's Speech</Title>
+        <Price>17.95</Price>
+    </Movie>
+    <Movie year="2013">
+        <Title>Star Trek Into Darkness</Title>
+        <Price>19.95</Price>
+    </Movie>
+</Movies>

@@ -68,7 +68,7 @@ public class ListMovies {
     private static Connection getConnection() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost/Movies";
             String user = "root";      
             String pw = "Ambulance7";
