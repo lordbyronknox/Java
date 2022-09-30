@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Movies>
+    <Movie year="1946">
+        <Title>It's a Wonderful Life</Title>
+        <Price>14.95</Price>
+    </Movie>
+    <Movie year="1974">
+        <Title>Young Frankenstein</Title>
+        <Price>16.95</Price>
+    </Movie>
+    <Movie year="1977">
+        <Title>Star Wars</Title>
+        <Price>17.95</Price>
+    </Movie>
+    <Movie year="1987">
+        <Title>The Princess Bride</Title>
+        <Price>16.95</Price>
+    </Movie>
+    <Movie year="1989">
+        <Title>Glory</Title>
+        <Price>14.95</Price>
+    </Movie>

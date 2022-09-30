@@ -29,7 +29,7 @@ public class FileSnippets
         // f.isDirectory()
         // f.getName()          returns a string of file name (without the path)
         /*
-        Get arry of files contained in a directory:
+        Get array of files contained in a directory:
             File[] files = dir.listFiles();
             for (File f : files)
                 System.out.println(f.getName());
