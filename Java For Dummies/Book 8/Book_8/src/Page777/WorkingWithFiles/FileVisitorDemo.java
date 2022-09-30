@@ -41,6 +41,7 @@ public class FileVisitorDemo
         }
     }
 
+//inner class    
     private static class MyFileVisitor extends SimpleFileVisitor<Path> 
     {
 //method to print name of file to console, and return FileVisitResult.CONTINUE

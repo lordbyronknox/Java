@@ -21,7 +21,7 @@ public class TestCreateFile
     public static void main(String[] args) 
     {
         try{
-        File myFile = new File("C:\\Users\\byron\\Desktop\\Java\\Java\\Java For Dummies\\Book 5\\Book_5\\src\\Page811\\WritingToATextFile\\test.txt");
+        File myFile = new File("C:\\Users\\byron\\Desktop\\Java\\Java\\Java For Dummies\\Book 8\\Book_8\\src\\Page811\\WritingToATextFile\\test.txt");
         if (myFile.createNewFile()) {
             System.out.println("Thumbs up!");
         }
