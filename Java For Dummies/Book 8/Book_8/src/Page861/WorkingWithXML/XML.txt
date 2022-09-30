@@ -18,3 +18,50 @@ XML
   An attribute is a name-value pair inside the start tag of an element.
   eg. <Book title="Java for Dummies"> 
 
+
+USING A DTD
+(Document Type Definition)
+* Spells out the structure of the xml document: What elements can appear, what attributes they must have,
+  what subelements an element must have (eg. movie, must have title and year), what the root element must be 
+  named and how many elements it must have etc.
+  [it is supposed to make it easier for the user to read the document, but it can also validate the document,
+   eg. make sure it doesnt have a movie element with two title sub-elements].
+
+* You can store a DTD in the XML document, but usually it is stored in a separate file
+  so u can use it to govern the format of multiple MXL documents of the same type.
+  To indicate the name of the file that contains the DTD you add <!DOCTYPE> to the XML document.
+  eg.
+    <!DOCTYPE Movies SYSTEM "movies.dtd">
+
+
+
+[see movies.dtd.... explained below:]
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Movies (Movie*)>                  //Movies element, has 1 or more 'movie' elements' in it.
+<!ELEMENT Movie (Title, Price)>             //Movie element, contains a 'title' element and 'price' element.
+<!ATTLIST Movie year CDATA #REQUIRED>       //!ATTLIST tag says: the 'movie' element' has an attribute 
+                                               called 'year', can be any kind of data (CDATA), and is REQUIRED.
+<!ELEMENT Title (#PCDATA)>                  //title element consists of text data
+<!ELEMENT Price (#PCDATA)>                  //title element consists of text data
+
+
+Here’s an ATTLIST tag that specifies a list of possible values along with a default:
+<!ATTLIST Movie genre (SciFi|Action|Comedy|Drama) Comedy>
+
+
+PROCESSING XML 
+To process a XML document in a java program use either:
+* DOM: Document Object Model
+  Read the entire XML document into memory, where it is stored as a collection of objects
+  structures in as a tree.
+  Then you can process the elements of the tree (called nodes).
+  If you change any of the nodes you can write the document back to file.
+
+OR
+
+* SAX: Simple API for XML
+  A read-only technique that lets you read the elements of an xml document from a file and
+  react to them as they come.
+  Does not require you to store an entire xml document in memory at once, so is often used
+  for large xml documents.
