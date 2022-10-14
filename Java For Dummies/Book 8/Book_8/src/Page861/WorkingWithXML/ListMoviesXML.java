@@ -3,7 +3,7 @@
  */
 package Page861.WorkingWithXML;
 
-import javax.*;
+import java.io.IOException;
 import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.w3c.dom.*;
@@ -45,7 +45,7 @@ public class ListMoviesXML {
 //create the DOM by calling the DocumentBuilder's parse() method. It takes an inputSource as an argument,
 // which takes a filename as an argument.  You can create the input source in the parse method:
             return builder.parse(new InputSource(name));    //name = movies.xml
-        } catch (Exception e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
         return null;
