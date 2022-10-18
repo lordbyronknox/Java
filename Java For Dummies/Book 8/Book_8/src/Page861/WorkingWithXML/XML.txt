@@ -2,7 +2,7 @@
 XML
 * A standardized way to create, store, exchange between different types of computer systems or programs.
 * It uses tags (like HTML). Each tag is an element.
-<?xml version='1.0'?>                   //Every xml file must start with a xml declaration. (doesn't need an end tag)
+<?xml version='1.0'?>                   //Every xml file must start with a xml declaration. (Doesn't need an end tag)
 <Books>                                 //root element
     <Book>                                  //start tag (element)
         <Title>Java For Dummies</Title>         //everything between the start and end tag is the
