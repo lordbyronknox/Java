@@ -1,0 +1,213 @@
+UBANTO (linux for windows)
+
+
+~		- home (cd ~)
+/		- root (cd /)	(absolute paths start with '/'	eg. cd /root/home/byron )
+cd ..		- goes up/back one directory
+cd		- change to home directory. (alternatively: cd ~)
+cd <directory/>  - change to the specified directory. (cd Documents/)
+\		- escape key. Use with directories that have spaces in the name. eg: cd My\ Videos/
+cntrl + c	- stop (stop an execution/command from running)
+cntrl + l	- clear screen (or 'clear')
+file <file>	- Tells u more about the file. (file .you_go)
+locate <file>	- find a file on your system. (locate Documents). (to update database: sudo updatedb)
+find		- find files or folders within specified folder and its subfolders. find <where> <what to look for>
+		  (find . -name '*.js'): (. = this folder). (-name = look in file name). ('*.js' = any file with js extension)
+		  (find Video -name '7'): find file in Video folder, named 7.
+		  (find . type d): search by type. d = directories, f = files
+		  (find . -type f -name '*doc*') find all 'f'iles that have 'doc' in their names.
+		  (find Documents -iname 'a*') files/folders starting with 'a' or 'A'. (iname = case insensitive)
+		  (find . -name 'E*' -or -name 'A*') ...file names starting with E or A.
+		  (find . -name "*.bak" -delete) find and delete all .bak files.
+		  (find . -name "*.bak -exec cat {} \;) find .bak files and cat them.
+grep		- find text in files.	(grep <string to look for> <file to look in>)
+		  (grep Su test.js) find 'Su' in file 'test.js'
+		  (grep -r 'Su') find all 'r' in all files in current folder and its subdirectories.
+pwd		- print current directory (shows you the full path/ABSOLUTE PATH)
+		  Absolute Path: the path from ROOT -> The Folder you are in. eg. /mnt/c/Users/byron
+		  Relative Path: the path from where you are to where you want to go. 
+			eg. if you are in /byron, and want to go to Documents: cd Documents/
+ls			- List Storage
+ls -la			- list all files in current folder
+ls <folder name>	- peek inside a folder. (ls Documents/) or (ls Documents/Work/Invoices)
+mkdir <name>		- create folder in current directory:	(mkdir MyFolder)
+			  create folder at specific path:	(mkdir <path/Myfolder>)
+			  create multiple folders:		(mkdir MyFolder1 MyFolder2 MyFolder 3)
+			  create nested folders:		(mkdir -p MyFolder/MyOtherFolder/BabyFolder)
+rmdir <folder>		- delete/remove (empty) folder.
+rm <file/folder>	- deletes file or folder
+			  delete folder and its content:	(rm -r MyFolder)
+touch <file name>	- creates a file (in the current directory). eg. touch test.txt
+xdg-open <file>		- opens file in the default application.
+nano <file name>	- nano is a built-in text editor. open a file by typing: nano test.txt
+			  type in the file and type 'cntrl+x' to exit, 'y' to save, enter.
+mv			- Move a file:		(mv <file/folder> <destination folder>)
+			  Rename a file:	(mv <current file name> <new file name>)
+du			- display size of directories/files.
+df			- display files system, size, used, available, and mounted on
+cp			- Copy file/folder	(cp <file to copy> <new file's name>)
+			  Use -r ('recursive') to copy folder with its content: (cp -r Folder CopiedFolder)
+			  Copy to different location:	(cp Folder1 Folder2/Folder1copy)
+ps			- view the processes running on your computer.
+			  (ps)     processes started by current user.
+			  (ps ax)  processes started by all users.
+top			- shows the top cpu processes that are running.
+kill			- kill a process.	(kill <process id>) - uses '15) SIGTERM' by defaults.
+			  [get Process ID (PID) by running 'ps a']
+			  (kill ls): list of kill signals you can use. eg 9) SIGKILL = force shutdown, 15) SIGTERM = a more gentle shutdown.
+			  (kill -SIGKILL 1128763): kills the process who's ID is 1128763.
+			  (kill -9 1128763): same as above, uding SIGKILL's number instead.
+killall			- Kill a process, using the program's name.
+			  (killall -9 node): kills all running 'node' applications.
+jobs			- shows a list of running jobs. (commands that are are still running/long running commands eg. listing all files on your hard drive)
+(fg and bg)		  [while a process is running on the screen you can SUSPEND or STOP it using:
+			  cntrl+z: suspends a job.
+			  cntrl+c: stops a job.
+			  [you can then enter 'jobs' to see all suspended jobs.  Here you can start them again by either letting them run
+			   in the forground (fg), or the background (bg), by typing:
+			  fg <job number>	- resume running in the forground.
+			  bg <job number>	- resume running in the background.
+gzip			- zip a file.
+			  gzip <file name>	= zips file, and replaces/deletes the original.
+			  gzip -k <file name>   = zips and keeps original file.
+			  gzip -d <filename>	= unzip a file. (or use gunzip)
+gunzip			- unzip a file.  (gunzip <file name>)
+tar			- archives multiple files into one file. (usually to be zipped afterwards)
+			  tar -cf <name of new archive file> <file to be archived> <file to be archived>
+			  (tar -cf myArchive.tar file1.txt file2.txt): -c=create, f=write to file
+			  [extract from an archive file]
+			  (tar -xf mtArchive.tar): x=extract	(add '-C <directory> to unarchive to that directory)
+			  (tar -tf archive.tar): view, without extracting, the files in the archive.tar file.
+			  (tar -czf archive.tar.gz file1.txt file2.txt): archive and zip
+tree			- show directory tree
+cat <file name> 	- [Concatinate]. show content of file/s. (cat test.js) (cat test.js list.txt)
+less <file name>	- Opens file in an interface.
+head <file name>	- show first 10 lines of a file.   (head test.txt)
+			  show specified number of lines:  (head test.txt -n 50)
+tail			- shows last 10 lines of a file. (use -n to specify number of lines)
+>			- Redirect output. (writes output text to a file). (date > test.js) 
+			  !!NOTE: this overwrites everything in the file.
+			  >> Redirects and APPENDS: (date >> test.js)
+echo			- returns your text. (eg. useful for creating a new file and placing text in it)
+			  echo "USERNAME=byron" > config.txt
+			  [EXPANSION] return the value of something. eg 'echo ~' returns '/home/byron'
+			  Expand enviroment variables:  echo $PATH, echo $USER
+			  Expand path names in directory (* = anything, ? = any single character):  echo *, echo *.txt
+							.
+wc			- [word count] returns number of bytes, chars, lines, words etc. (use flags to specify)
+			  (wc testCopy.js) or (wc -w testCopy.js) (wc -wl testCopy.js)
+|			- [Piping]. Take the output of one command, and apply it to another command:
+			  (ls -al | wc)
+sort			- Sorts and displays a files content. (does not change the file). (use flags for different sort options)
+			  (ls text.txt sort)
+uniq			- displays unique values. removes values if a duplicate is adjacent to it. (useful when using flags to alter the behavior)
+			  (uniq testCopy.js) (sort favFlavours.txt | uniq -u)
+xargs			- passes data to a command as arguments.	
+			  eg. cat deadPlayers.txt | xargs rm	- this passes the output of cat (which is a bunch of file names) as the arguments for rm.
+				ie. cat dedPlayers  = OUTPUT: 'one.txt two.txt'
+					|	    = pipes it to rm				      
+				    xargs rm 	    = xargs passes it as arguments to rm (ie: 'rm one.txt two.txt')
+ln			- Links: link one file to another. (similar to a desktop shortcut). Allows two files to point to the same thing in memeory.
+			  So any changes to one file reflects in the other. But deleting one does not delete the other.
+			  [HARD LINK]: Both files point to same data in memory.	(delete one, the other remains unchanged)  
+				ln <original file> <file to create and link>
+			  [SOFT LINK]: Original file points to memory, symlink points to original file. (delete original, the symlink file is rendered useless).  
+				ln -s <original file> <file to create and link>
+who			- list of users logged in.
+su			- switch users (log in as someone else).	su - <username>   [exit/cntrl+d = to log back out]
+sudo			- [Super User Do]: lets you run certain commands as the ROOT user. (where the owner is root)
+passwd			- [Password]: change a password.	
+			  (passwrd) (sudo passwd <user who's password to change>)
+chown			- change the owner of a file.		chown <user to be owner> <file>
+			  change the owner and group.		chown <user to be owner>:<group> <file>
+			  change the group of a file.		chgrp <group> <file>
+			  (sudo chown byron Music): you may need to use sudo, depending on your permissions.
+sudo apt-get update	- update packages to latest versions.
+sudo apt-get upgrade	- upgrade packages.
+sudo apt install <app name>	- install an app. (eg. sudo apt install tree)
+nano ~/.bashrc		- bashrc is a hidden file in the home directory. (contains configurations). Open using nano.
+which <command>		- check if a command is installed. (which locate)
+whatis <command>	- tells you what a command does. (whatis locate)
+apropos <keyword>	- pulls up a list of commands related to your keyword. (apropos date)
+man <command>		- displays the manual for a command. (man locate)
+history			- pulls up a list of all the commands that you've used.
+			  Each command is numbered. You can run a command in the history by typing !<number>
+			  (history | grep 'Su') pipe history to grep and find entries with 'Su'
+whoami			- shows who is logged in.
+diff			- compares two files (shows the difference).  (diff test.txt testCopy.txt)
+alias			- create an alias (custom name for running a specified command)
+			  !!NOTE: * aliases should be added to the config file (eg. .bashrc) or they will be lost once terminal is closed.
+				    Remember to run 'source .bashrc' to load the changes.
+				  * "" vs ''    -   myAlias="pwd"    will always produce what pwd was at time of creating the alias.
+					 	-   myAlias='pwd'    will produce what pwd is at the time it is run]
+			  (alias): shows a list of all your aliases
+			  (alias myAlias='<command>'): creates an alias for the command.
+			  (myAlias): runs the command
+
+
+----------------------------------------------------------------
+			
+[permissions]		- [eg: -rw-rw--]	[type of file][Owner][Group][World/everyone else]
+			  first character = type of file:	- regular file
+								d directory
+								c character special file
+								l symbolic link
+			  PERMISSIONS:  r = read 	  - file can be read. Directory content can be listed.	
+					w = write 	  - file can be modified. Directory's content can be modified (create new files, rename files/folders)
+							    only if executable attribute is also set.
+					x = execute 	  - files can be treated as programs to be executed (eg 'touch'). Directories can be cd'ed into.
+					- = no permission - cannot read, modify, execute file... depending on the location of the '-'.
+							    cannot view content, modify, cd into Directory... depending on '-' location. 
+			  Next 3 = Owner:	read write execute	eg. -[rwx]r-x--x	owner can read, write, execute
+			  next 3 = Group:	read write execute	eg. -rwx[r-x]--x	group can read, execute
+			  last 3 = World	read write execute	eg. -rwxr-x[--x]	world can execute	
+
+chmod			- [Change Mode]: change the permissions of a file.
+			  chmod <mode> <file>
+
+			  First specify the 'Who':	u - user (owner of the file)
+							g - group (members of the group)
+							o - others (the 'world')
+							a - all of the above.
+
+			  		   'What':	- removes permission
+							+ grants permission
+							= sets a permission and removes others
+
+					  'Which':	r - the read permissions
+							w - the write permissions
+							x - the execute permisions
+
+			Eg.  chmod g+w file.txt		-rw-r--r--	--changes to-->	     -rw-rw-r--	
+			     
+			     chmod a+rwx file.txt	grants all users (a) r,w and x       -rwxrwxrwx 
+			     
+			     chmod a=r file.txt 	grants all users read... but removes all other privilages    -r--r--r--
+
+			     chmod ug=rw file.txt	user and group get read write, everything else is -
+
+
+----------------------------------------------------------------
+
+[EXPANSION]
+*	= anything
+?	= any single character
+{}	= touch app.{css, js, py}	- makes 3 files: 'app.css' 'app.js' 'app.py'
+	  echo {admin, home, video}.txt - makes 3 files: 'admin.txt' 'home.txt' video.txt'
+	  echo {1..99}			- prints the range from 1 to 99
+
+[home directory: ~ ]
+
+[byron@DESKTOP-U1I1PKS:~$	(user)@(computer you are using):(~ = home)($ = logged in as regular/standard user)]
+
+[tab button for auto-complete: eg. cd Doc (press tab to auto-complete... 'Document')]
+
+[add an alias. eg. entering 'winhome' will execute the command 'cd /mnt/c/Users/byron/']	
+open the bashrc file - nano ~/.bashrc
+under 'esac' enter:	alias winhome='cd /mnt/c/Users/byron/'
+exit and save:		exit: cntrl+x 	save:  y
+source the file so changes can take effect:	source ~/.bashrc
+
+[windows cmd commands]
+bash		- opens Ubantu comand line within windows cmd.
+exit		- exits Ubantu and takes you back to windows cmd.
